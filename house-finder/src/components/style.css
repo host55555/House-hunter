@@ -1,0 +1,224 @@
+/* Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    scroll-padding-top: 3rem;
+    list-style: none;
+    text-decoration: none;
+}
+/* variables */
+:root {
+--main-colour: #2288ff ;
+--second-colour: #192f6a;
+--text-colour: #314862;
+--bg-colour: #fff;
+
+/* Box Shadow */
+--box-shadow: 2px 2x 18px rgb(14 52 54 / 15%);
+}
+img{
+    width: 100%;
+}
+body {
+    color: var(--text-colour);
+}
+section{
+    padding: 4.5rem 0 3rem;
+}
+.container{
+    max-width: 1068px;
+    margin-left: auto;
+    margin-right: auto;
+}
+header{
+    display: block;
+    width: 100%;
+    background: var(--bg-colour);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 35px;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-colour);
+    text-transform: uppercase;
+}
+.logo .bx{
+    font-size: 24px;
+    color: var(--main-colour);
+}
+.navbar{
+    display: flex;
+}
+.navbar a{
+    padding: 8px 17px;
+    color: var(--text-colour);
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.navbar a:hover{
+    color: var(--main-colour);
+}
+#menu-icon{
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+}
+#menu{
+    display: none;
+}
+.btn{
+    padding: 8px;
+    background: var(--main-colour);
+    color: var(--bg-colour);
+    border-radius: 5px;
+    width: 70px;
+    height: 40px;
+}
+.btn:hover{
+    background: #3492fd;
+}
+/* Home */
+.home{
+    margin-top: 5rem;
+    background:rgb(19, 18, 18);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 440px;
+    border: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+.home{
+    padding-left: 35px;
+}
+.home-text h1{
+    color: var(--bg-colour);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.about{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(18rem,auto));
+    gap: 2rem;
+}
+.about-img{
+    border-radius: 3rem 0 3rem 3rem;
+}
+.about-text span{
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--main-colour);
+}
+.about-text h2{
+    font-size: 1.7rem;
+}
+.about-text p{
+    font-size: 0.938rem;
+    margin: 1rem 1rem;
+}
+.sales{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(240px,auto));
+    gap: 2.4rem;
+}
+.sales .box{
+    padding: 20px;
+    background: var(--bg-colour);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    border-radius: 2rem;
+}
+.sales .box:hover{
+    background: var(--main-colour);
+    color: var(--bg-colour);
+    transition: 0.4s all linear;
+}
+.sales .box .bx{
+    padding: 10px;
+    border-radius: 70%;
+    background: #236680;
+    column-rule-color: var(--main-colour);
+    font-size: 25px;
+}
+.sales .box h3{
+font-size: 1.1rem;
+margin: 1rem 0 0.4rem;
+}
+.sales .box p{
+    font-size: 0.938rem;
+}
+/* Properties */
+.heading{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.heading span{
+    font-weight: 500;
+    color: var(--main-colour);
+}
+.heading h2{
+    font-size: 1.7rem;
+}
+.heading p{
+    font-size: 0.938rem;
+}
+.properties{
+    background: #fbfbfb;
+    border-radius: 2rem;
+}
+.properties-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(240px,auto));
+    gap: 3rem;
+    padding: o 50px;
+}
+.properties-container .box{
+    background: var(--bg-colour);
+    padding: 10px;
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+}
+.properties-container .box:hover{
+    transform: translateY(-10px);
+    transition: 0.5s;
+}
+.properties-container .box img{
+    border-radius: 1rem;
+    height: 1;
+    object-fit: cover;
+}
+.newsletter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;row-gap: 2rem;
+    justify-content: center;
+    text-align: center;
+}
+.newsletter h2{
+    font-size: 1.7rem;
+}
+.newsletter form{
+    background: var(--bg-colour);
+    box-shadow: var(--box-shadow);
+    padding: 6px 10px;
+    border-radius: 5rem;
+}
