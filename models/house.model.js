@@ -6,6 +6,7 @@ const houseShema = new Schema({
     desc: {type: String, required: true},
     agent:{type: String, required: true},
     price: {type:String, required: true},
+    houseImage:{type: String, required:true}
 });
 
 const Houses = mongoose.model("Houses", houseShema);
