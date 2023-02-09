@@ -11,4 +11,4 @@ const houseShema = new Schema({
 
 const Houses = mongoose.model("Houses", houseShema);
 
-module.exports = Articles;
+module.exports = Houses;

@@ -16,15 +16,15 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage});
 
 //REQUEST GET ALL THE HOUSES
-router.get("/", (req,res)=>{
+router.get("/api/", (req,res)=>{
     Houses.find()
     .then((house)=> res.json(house))
     .catch((err)=> res.status(400).json(`Error: ${err}`));
 });
 
 //REQUEST ADD NEW ARTICLE
-router.post("/add",upload.single("houseImage"), (req,res)=>{
-    const newHouse = new Houses({
+router.post("/api/add",upload.single("houseImage"),(req,res)=>{
+    const house = new Houses({
         title: req.body.title,
         desc: req.body.desc,
         agent: req.body.qgent,
@@ -32,7 +32,7 @@ router.post("/add",upload.single("houseImage"), (req,res)=>{
         houseImage: req.file.originalname,
     });
 
-    newHouse
+    house
         .save()
         .then(()=> res.json("New House added"))
         .catch((err)=> res.status(400).json(`Error: ${err}`));
@@ -47,7 +47,7 @@ router.put('/update/:id', upload.single("houseImage"),(req,res)=>{
         house.desc = req.body.desc;
         house.agent =req.body.agent;
         house.price = req.body.price;
-        house.houseImage =req.file.originalname;
+       house.houseImage =req.file.originalname;
         
         house
             .save()
@@ -55,3 +55,5 @@ router.put('/update/:id', upload.single("houseImage"),(req,res)=>{
             .catch((err)=> res.status(400).json(`Error: ${err}`));
     })
 })
+
+module.exports = router;

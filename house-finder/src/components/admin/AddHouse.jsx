@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import axios from 'axios'
 const AddHouse = () => {
-    const url ='http://localhost:5000/add'
+    const url = ('http://localhost:4000/api/house/add')
     const [title, setTitle] = useState("")
     const [desc, setDesc] = useState("")
     const [agent, setAgent] = useState("")
@@ -15,7 +15,9 @@ const AddHouse = () => {
     const changeOnclick = (e)=>{
         e.preventDefault();
 
-        const formData = new FormData();
+       
+        
+         const formData = new FormData();
         
         formData.append("title",title);
         formData.append("desc",desc);
@@ -23,26 +25,33 @@ const AddHouse = () => {
         formData.append("price",price);
         formData.append("houseImage",filename);
 
+        console.log(formData);
+
         setTitle("");
         setDesc("");
         setAgent("");
         setPrice("");
 
-        axios
-            .post(`${url}`, formData)
+        
+        axios.post(`${url}` + formData)
             .then((res)=> {
                 setMessage(res.data)
-                console.log(res.data)
+                
             })
             .catch((err)=>{
                 console.log(err);
             });
-    }
+             
+             
+             
+       } 
+      
+    
   return (
     <div className='m-5 p-5 border block justify-center bg-sky-500'>
         <h1 className='text-2xl font-black'>Add new house</h1>
         <span>{message}</span>
-        <form onSubmit={changeOnclick} 
+        <form onSubmit={changeOnclick}  
         encType="multipart/form-data" m-5>
             <input type="text" className='m-5 border'
             value={title} placeholder="title"
@@ -60,10 +69,10 @@ const AddHouse = () => {
             <input type="file" filename="houseImage" className='m-5 border'
             onChange={onChangeFile}/><br/>
         
-            <button type='submit' className='bg-green-500 border border-red-600'> Post House</button>
+            <button  type='submit' className='bg-green-500 border border-red-600'> Post House</button>
         </form>
     </div>
   )
-}
+  }
 
 export default AddHouse
