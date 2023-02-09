@@ -4,7 +4,7 @@ import * as Icons from 'react-bootstrap-icons'
 const Footer = () => {
   return (
     <div className='block bg-black'>
-    <div className='md:flex justify-around items-center  text-white'>      
+    <div className='md:flex justify-around items-center md:divide-x md:divide-gray-300 text-white'>      
       <div className='m-2 md:m-5 p-5 text-left'>
          <h1 className='text-xl font-black'>Contacts</h1>
          <ul>
@@ -20,7 +20,10 @@ const Footer = () => {
           <li className='text-blue-800 m-2' >home</li>
           <li className=' text-blue-800 m-2'>about us</li>
           <li className=' text-blue-800 m-2'>contacts</li>
+          <li className=' text-blue-800 m-2'>available houses</li>
+          <li className=' text-blue-800 m-2'>feedback</li>
           <li className=' text-blue-800 m-2'>properties</li>
+          
          </ul>
 
 

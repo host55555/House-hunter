@@ -6,7 +6,7 @@ const Navbar = () => {
     <div  className='md:flex w-[100] items-center bg-black md: text-white
     justify-between py-[20px] md:px-[35px]'>
         {/**logo */}
-        <h1 className="font-blac  text-2xl md:text-3xl m-5 flex  text-center
+        <h1 className="font-black text-2xl md:text-3xl m-5 flex  text-center
         ">House Finder {<Icons.Search className='m-2'/>}</h1>
         
         

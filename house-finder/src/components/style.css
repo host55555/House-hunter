@@ -95,25 +95,14 @@ header{
     background: #3492fd;
 }
 /* Home */
-.home{
-    margin-top: 5rem;
-    background:rgb(19, 18, 18);
-    background-repeat: no-repeat;
+.banner{
+    background:linear-gradient(rgba(0,0,0,0.5),#009688) ,url("https://media.istockphoto.com/id/1411149291/photo/row-of-apartments.jpg?b=1&s=170667a&w=0&k=20&c=xpGhb5Kv5EKnWCIyWnrvI9CnCd2BIPEbO-2FnZAex_M=");
     background-size: cover;
     background-position: center;
-    height: 440px;
-    border: 1.5rem;
-    display: flex;
-    align-items: center;
+    height: 100vh;
+    
 }
-.home{
-    padding-left: 35px;
-}
-.home-text h1{
-    color: var(--bg-colour);
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
+
 .about{
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(18rem,auto));
