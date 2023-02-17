@@ -6,7 +6,7 @@ const Houses = require('../models/house.model')
 //multer
 const storage = multer.diskStorage({
     destination:(req, file, callback) =>{
-        callback(null, '../public/uploads/');
+        callback(null, './public/uploads/');
     },
     filename: (req, file, callback)=>{
         callback(null, file.originalname);
@@ -16,18 +16,18 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage});
 
 //REQUEST GET ALL THE HOUSES
-router.get("/api/", (req,res)=>{
+router.get("/houses", (req,res)=>{
     Houses.find()
     .then((house)=> res.json(house))
     .catch((err)=> res.status(400).json(`Error: ${err}`));
 });
 
 //REQUEST ADD NEW ARTICLE
-router.post("/api/add",upload.single("houseImage"),(req,res)=>{
+router.post("/addhouse",upload.single("houseImage"),(req,res)=>{
     const house = new Houses({
         title: req.body.title,
         desc: req.body.desc,
-        agent: req.body.qgent,
+        agent: req.body.agent,
         price: req.body.price,
         houseImage: req.file.originalname,
     });

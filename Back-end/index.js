@@ -3,13 +3,15 @@ const cors = require('cors')
 const connectDb =require('./config/db')
 //import routes
 const houseRouter = require('./routes/houseRouter')
+const userRouter = require('./routes/userRouter')
 //creating app
 const app = express();
 //middleware
-app.use(express.json);
+app.use(express.json());
 app.use(cors())
 //routes
-app.use('/api/house',houseRouter);
+app.use('/house',houseRouter);
+app.use('/agents',userRouter);
 
 const port =  4000
 
