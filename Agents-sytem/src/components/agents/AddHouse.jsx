@@ -30,7 +30,7 @@ const AddHouse = () => {
 
     })
       .then((res) => {
-        console.log(res)
+        setMessage(res.data);
 
       })
       .catch((err) => {

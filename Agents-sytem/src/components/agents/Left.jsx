@@ -6,7 +6,7 @@ const Left = () => {
     <div className='flex justify-evenly'>
         <div className='shadow-lg shadow-black m-5 '>
             <div className='bg-black text-white rounded-md'>
-                <h1 className='text-white p-1'>Total Agents</h1>
+                <h1 className='text-white p-1'>Total properties</h1>
                 <div className='bg-blue-700 mt-3 h-10'>
                     34
                 </div>
@@ -14,7 +14,7 @@ const Left = () => {
         </div>
         <div className='shadow-lg shadow-black m-5'>
             <div className='bg-black text-white rounded-md'>
-                <h1 className='text-white p-1'>Pending Agents Verifications</h1>
+                <h1 className='text-white p-1'>Booked Houses</h1>
                 <div className='bg-blue-700 mt-3 h-10'>
                     0
                 </div>
@@ -23,7 +23,7 @@ const Left = () => {
     </div>
     <div className='shadow-lg shadow-black m-3 '>
         <div className='bg-black text-white rounded-md'>
-            <h1 className='text-white p-1'>New Agents</h1>
+            <h1 className='text-white p-1'>Occupied houses</h1>
             <div className='bg-blue-700 mt-3 h-10'>
                 8
             </div>

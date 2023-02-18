@@ -34,7 +34,7 @@ router.post("/addhouse",upload.single("houseImage"),(req,res)=>{
 
     house
         .save()
-        .then(()=> res.json("New House added"))
+        .then(()=> res.status(200).json("New House added"))
         .catch((err)=> res.status(400).json(`Error: ${err}`));
 })
 

@@ -10,8 +10,9 @@ const Navbar = () => {
                 <li className='text-white mx-5 '>
                   <Link to="houses">My houses</Link> </li>
                 <li className='text-white mx-5'>
-                  <Link to=""></Link> Account</li>
-                <li className='text-white mx-5'>Add house</li>
+                  <Link to="account"> Account</Link> </li>
+                <li className='text-white mx-5'>
+                  <Link to='addhouse'> Add house</Link></li>
             </ul>
         </div>
 
