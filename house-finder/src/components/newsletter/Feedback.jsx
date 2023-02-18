@@ -2,7 +2,7 @@ import React from 'react'
 import '../style.css'
 const Feedback = () => {
     return (
-        <div>
+        <div className='pt-72 md:pt-40'>
             <section className="newsletter container">
                  
                 <h2>Want to advertise with us?<br />Email us for more info.</h2>

@@ -1,5 +1,6 @@
 import React from 'react'
 import * as Icons from 'react-bootstrap-icons'
+import {Link} from 'react-router-dom'
 const Navbar = () => {
   return (
     <header>
@@ -7,14 +8,14 @@ const Navbar = () => {
     justify-between py-[20px] md:px-[35px]'>
         {/**logo */}
         <h1 className="font-black text-2xl md:text-3xl m-5 flex  text-center
-        ">House Finder {<Icons.Search className='m-2'/>}</h1>
+        ">House Hunter {<Icons.Search className='m-2'/>}</h1>
         
         
         <ul className=" text-center md:flex md:bg-transparent ">
-            <li className='text-xl m-2'><a href="#home">Home</a></li>
-            <li className='text-xl m-2'><a href="#about">About Us</a></li>
-            <li className='text-xl m-2'><a href="#sales">Contacts</a></li>
-            <li className='text-xl m-2'><a href="#properties">Properties</a></li>
+            <li className='text-xl m-2'><Link to='/'>Home</Link></li>
+            <li className='text-xl m-2'><Link to='houses'>Houses</Link></li>
+            <li className='text-xl m-2'><Link to='about'>About</Link></li>
+            <li className='text-xl m-2'><Link to='feedback'>Advertise</Link></li>
         </ul>
         
         <a href="#" className='text-xl bg-sky-600 rounded-xl hidden text-center'> Log In</a>

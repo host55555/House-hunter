@@ -96,7 +96,7 @@ header{
 }
 /* Home */
 .banner{
-    background:linear-gradient(rgba(0,0,0,0.5),#009688) ,url("https://media.istockphoto.com/id/1411149291/photo/row-of-apartments.jpg?b=1&s=170667a&w=0&k=20&c=xpGhb5Kv5EKnWCIyWnrvI9CnCd2BIPEbO-2FnZAex_M=");
+    background-image:linear-gradient(rgba(0,0,0,0.5),#009688) ,url("https://media.istockphoto.com/id/1411149291/photo/row-of-apartments.jpg?b=1&s=170667a&w=0&k=20&c=xpGhb5Kv5EKnWCIyWnrvI9CnCd2BIPEbO-2FnZAex_M=");
     background-size: cover;
     background-position: center;
     height: 100vh;

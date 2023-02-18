@@ -2,7 +2,7 @@ import React from 'react'
 import '../style.css'
 const About = () => {
   return (
-    <div>
+    <div className='pt-72 md:pt-40'>
         <section className="about container" id="about">
         <div class="about-img">
             <img src="https://media.istockphoto.com/id/1401582615/photo/residential-buildings-in-a-new-city-district.jpg?s=612x612&w=is&k=20&c=avyBe0hmd0m1lnRBnr_bJtNKuZaelnM8Y3ZXXMDo8Rg=" alt=""/>

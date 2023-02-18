@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { set } from 'mongoose'
 const AddHouse = () => {
  
   const [owner, setOwner] = useState("")
   const [desc, setDesc] = useState("")
   const [agent, setAgent] = useState("")
   const [price, setPrice] = useState("")
+  const [deposit, setDeposit] = useState("")
+  const [quantity, setQuantity] = useState("")
   const [filename, setFileName] = useState("")
   const [message, setMessage] = useState("")
 
@@ -23,6 +26,8 @@ const AddHouse = () => {
     formData.append("desc", desc);
     formData.append("agent", agent);
     formData.append("price", price);
+    formData.append("deposit", deposit);
+    formData.append("quantity", quantity);
     formData.append("houseImage", filename);
 
 
@@ -64,7 +69,9 @@ const AddHouse = () => {
           placeholder="price"
           onChange={(e) => setPrice(e.target.value)} /> <br />
         <input type="number" className='border border-green-600 rounded-lg m-2 text-center'
-          placeholder="Quantity" />
+          placeholder="Deposit" onChange={(e) => setDeposit(e.target.value)} />
+           <input type="number" className='border border-green-600 rounded-lg m-2 text-center'
+          placeholder="Quantity" onChange={(e) => setQuantity(e.target.value)} />
 
         <input type="file" filename="houseImage" className='border border-green-600 rounded-lg m-2 w-52 text-center'
           onChange={onChangeFile} /><br />

@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage});
 
 //REQUEST GET ALL THE HOUSES
-router.get("/houses", (req,res)=>{
+router.get("/", (req,res)=>{
     Houses.find()
     .then((house)=> res.json(house))
     .catch((err)=> res.status(400).json(`Error: ${err}`));
@@ -29,6 +29,8 @@ router.post("/addhouse",upload.single("houseImage"),(req,res)=>{
         desc: req.body.desc,
         agent: req.body.agent,
         price: req.body.price,
+        deposit: req.body.deposit,
+        quantity: req.body.quantity,
         houseImage: req.file.originalname,
     });
 
@@ -43,7 +45,7 @@ router.post("/addhouse",upload.single("houseImage"),(req,res)=>{
 router.put('/update/:id', upload.single("houseImage"),(req,res)=>{
     Houses.findById(req.params,id)
     .then((house)=>{
-        house.title = req.body.title;
+        house.owner = req.body.owner;
         house.desc = req.body.desc;
         house.agent =req.body.agent;
         house.price = req.body.price;
