@@ -25,7 +25,7 @@ router.get("/houses", (req,res)=>{
 //REQUEST ADD NEW ARTICLE
 router.post("/addhouse",upload.single("houseImage"),(req,res)=>{
     const house = new Houses({
-        title: req.body.title,
+        owner: req.body.owner,
         desc: req.body.desc,
         agent: req.body.agent,
         price: req.body.price,

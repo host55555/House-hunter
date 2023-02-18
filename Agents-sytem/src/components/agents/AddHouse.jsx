@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 const AddHouse = () => {
  
-  const [title, setTitle] = useState("")
+  const [owner, setOwner] = useState("")
   const [desc, setDesc] = useState("")
   const [agent, setAgent] = useState("")
   const [price, setPrice] = useState("")
@@ -19,7 +19,7 @@ const AddHouse = () => {
 
     const formData = new FormData();
 
-    formData.append("title", title);
+    formData.append("owner", owner);
     formData.append("desc", desc);
     formData.append("agent", agent);
     formData.append("price", price);
@@ -51,8 +51,8 @@ const AddHouse = () => {
         encType="multipart/form-data" >
         <h1 className='text-2xl font-black'>Add new house</h1>
         <input type="text" className='border border-green-600 rounded-lg m-2 text-center'
-          value={title} placeholder="title"
-          onChange={(e) => setTitle(e.target.value)} /> <br />
+          value={owner} placeholder="owner"
+          onChange={(e) => setOwner(e.target.value)} /> <br />
         <textarea type="text" className='border border-green-600 rounded-lg m-2 text-center'
           value={desc} placeholder="description"
           onChange={(e) => setDesc(e.target.value)} />
