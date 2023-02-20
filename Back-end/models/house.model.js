@@ -8,11 +8,8 @@ const houseShema = new Schema({
     price: {type:String, required: true},
     deposit: {type:String, required: true},
     quantity: {type:String, required: true},
-    houseImage:{
-        data:Buffer,
-        contentType:{
-            type: String, required:true}
-        }
+    houseImage:{type: String, required:true}
+        
        
 });
 

@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from 'react'
-import houses from '../../assets/houses'
+
 import House from './House'
 
 
