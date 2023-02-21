@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { set } from 'mongoose'
+
 const AddHouse = () => {
  
   const [owner, setOwner] = useState("")
@@ -9,6 +9,8 @@ const AddHouse = () => {
   const [price, setPrice] = useState("")
   const [deposit, setDeposit] = useState("")
   const [quantity, setQuantity] = useState("")
+  const [category, setCategory] = useState("")
+  const [location, setLocation] = useState("")
   const [filename, setFileName] = useState("")
   const [message, setMessage] = useState("")
 
@@ -28,6 +30,8 @@ const AddHouse = () => {
     formData.append("price", price);
     formData.append("deposit", deposit);
     formData.append("quantity", quantity);
+    formData.append("category", category);
+    formData.append("location", location);
     formData.append("houseImage", filename);
 
 
@@ -65,9 +69,15 @@ const AddHouse = () => {
         <input type="text" className='border border-green-600 rounded-lg m-2 text-center'
           value={agent} placeholder="agent"
           onChange={(e) => setAgent(e.target.value)} /> <br />
+           <input type="text" className='border border-green-600 rounded-lg m-2 text-center'
+          value={location} placeholder="Location"
+          onChange={(e) => setLocation(e.target.value)} /> <br />
         <input type="text" value={price} className='border border-green-600 rounded-lg m-2 text-center'
           placeholder="price"
           onChange={(e) => setPrice(e.target.value)} /> <br />
+           <input type="text" value={category} className='border border-green-600 rounded-lg m-2 text-center'
+          placeholder="category"
+          onChange={(e) => setCategory(e.target.value)} /> <br />
         <input type="number" className='border border-green-600 rounded-lg m-2 text-center'
           placeholder="Deposit" onChange={(e) => setDeposit(e.target.value)} />
            <input type="number" className='border border-green-600 rounded-lg m-2 text-center'

@@ -13,7 +13,6 @@ const Navbar = () => {
         
         <ul className=" text-center md:flex md:bg-transparent ">
             <li className='text-xl m-2'><Link to='/'>Home</Link></li>
-            <li className='text-xl m-2'><Link to='houses'>Houses</Link></li>
             <li className='text-xl m-2'><Link to='about'>About</Link></li>
             <li className='text-xl m-2'><Link to='feedback'>Advertise</Link></li>
         </ul>

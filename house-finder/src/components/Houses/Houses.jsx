@@ -2,12 +2,15 @@ import React, { useEffect,useState } from 'react'
 
 import House from './House'
 
-
+import houses from '../../assets/houses.json'
 const Houses = () => {
 
-  const [houses, setHouses]=useState(null);
 
-  useEffect(()=>{
+
+ {
+  /**
+   *   const [houses, setHouses]=useState(null);
+   * useEffect(()=>{
     fetch('http://localhost:4000/house/')
     .then(res=>{
        return res.json();
@@ -16,9 +19,13 @@ const Houses = () => {
       console.log(data)
       setHouses(data)
     })
+     },[])
+   * 
+   */
+ } 
 
 
-  },[])
+ 
 
   return (
     <div className='text-center pt-72 md:pt-40'>
@@ -33,8 +40,9 @@ const Houses = () => {
           <option value="guest"> guest house</option>
         </select>
       </div>
+      <House houses={houses}/>
 
-        {houses && <House houses={houses}/>}
+       {/*houses && <House houses={houses}/>*/}
     </div>
   )
 }

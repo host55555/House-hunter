@@ -7,6 +7,7 @@ import Houses from './components/Houses/Houses';
 import Home from './components/home/Home';
 import About from './components/about/About';
 import Feedback from './components/newsletter/Feedback';
+import Gallery from './components/Gallery/Gallery';
 
 
 
@@ -22,7 +23,9 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/Feedback' element={<Feedback />} />
           <Route path='/footer' element={<Footer />} />
+          <Route path='/gallery' element={<Gallery />}/>
         </Routes>
+        
 
         <Footer />
     </Router>
