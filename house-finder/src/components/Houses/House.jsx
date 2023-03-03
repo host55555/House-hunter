@@ -15,7 +15,7 @@ const House = ({ houses }) => {
                         houses.map((house, key) => {
                             return (
                                
-                                    <div className='bg-slate-100 my-3 md:my-5 mx-4 md:mx-8 p-2 md:p-5 w-52 md:w-60   rounded-lg shadow-lg shadow-black ' key={{/*houses._id*/ }}>
+                                    <div className='bg-slate-100 my-3 md:my-5 mx-4 md:mx-8 p-2 md:p-5 w-52 md:w-60   rounded-lg shadow-lg shadow-black hover:shadow-sky-400'   key={{/*houses._id*/ }}>
                                          <Link to='gallery'>
                                         <img src={house.image} />
                                         </Link>

@@ -23,7 +23,7 @@ router.get("/allhouses", (req,res)=>{
     .catch((err)=> res.status(401).json(`Error: ${err}`));
 });
 
-//REQUEST ADD NEW ARTICLE
+//REQUEST ADD NEW HOUSE
 router.post("/addhouse",upload.single("houseImage"),(req,res)=>{
     const house = new Houses({
         owner: req.body.owner,
@@ -61,6 +61,20 @@ router.put('/update/:id', upload.single("houseImage"),(req,res)=>{
             .then(()=> res.json("House Details Updates"))
             .catch((err)=> res.status(400).json(`Error: ${err}`));
     })
+})
+//DELETE HOUSE
+router.delete('/delete/:id',(req,res)=>{
+    Houses.findByIdAndDelete(req.params.id)
+    .then((house)=>{
+        if(!house){
+            return res.status(400).json();
+        }
+        res.status(200).json("House deleted");
+    })
+    .catch((error)=>{
+        res.status(404).json(`Error ${error}`);
+    })
+
 })
 //find house by category
 router.get('/category', (req,res)=>{
