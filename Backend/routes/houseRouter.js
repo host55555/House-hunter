@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer')
 const Houses = require('../models/house.model');
-const { route } = require('./userRouter');
+const { route } = require('./agentRouter');
 
 //multer
 const storage = multer.diskStorage({

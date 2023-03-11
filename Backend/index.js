@@ -4,15 +4,15 @@ const path = require('path');
 const connectDb =require('./config/db')
 //import routes
 const houseRouter = require('./routes/houseRouter')
-const userRouter = require('./routes/userRouter')
+const agentRouter = require('./routes/agentRouter')
 //creating app
 const app = express();
 //middleware
 app.use(express.json());
 app.use(cors())
 //routes
-app.use('/house',houseRouter);
-app.use('/agents',userRouter);
+app.use('/api/house',houseRouter);
+app.use('/api/agents',agentRouter);     
 app.use(express.static(path.join(__dirname, './public/uploads')))
 
 const port =  4000
