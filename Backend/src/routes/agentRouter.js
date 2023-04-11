@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const Agent = require('../../models/agentModel')
- const {registerAgent, createAccount, loginAgent, getAgent} = require('../../controllers/agentController')
+
+ const {registerAgent, createAccount, loginAgent, getAgent} = require('../controllers/agentController')
 
  //agent creating an account by admin
  router.post('/register',registerAgent)

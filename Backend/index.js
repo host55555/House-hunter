@@ -1,10 +1,9 @@
 const express = require('express');
 const cors = require('cors')
-const path = require('path');
-const connectDb =require('./config/db')
+const connectDb =require('./src/config/db')
 //import routes
-const houseRouter = require('./routes/houseRouter')
-const agentRouter = require('./routes/agentRouter')
+const houseRouter = require('./src/routes/houseRouter')
+const agentRouter = require('./src/routes/agentRouter')
 //creating app
 const app = express();
 //middleware
@@ -13,7 +12,7 @@ app.use(cors())
 //routes
 app.use('/api/house',houseRouter);
 app.use('/api/agents',agentRouter);     
-app.use(express.static(path.join(__dirname, './public/uploads')))
+
 
 const port =  4000
 

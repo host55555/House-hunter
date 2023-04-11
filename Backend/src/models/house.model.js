@@ -4,17 +4,16 @@ const Schema = mongoose.Schema;
 const houseShema = new Schema({
     owner:{type: String, required: true},
     desc: {type: String, required: true},
-    agent:{type: String, required: true},
-    price: {type:String, required: true},
-    deposit: {type:String, required: true},
+    amount: {type:String, required: true},
     quantity: {type:String, required: true},
     category: {type:String, required: true},
     location: {type:String, required: true},
-    houseImage:{type: String, required:true}
-        
+    image:{type: String, required:true},
+  
+   //owner,desc,amount,quantity,category,location,image    
        
 });
 
-const Houses = mongoose.model("Houses", houseShema);
+const House = mongoose.model("House", houseShema);
 
-module.exports = Houses;
+module.exports = House;
