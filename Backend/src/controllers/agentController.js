@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const asyncHandler = require('express-async-handler')
 const Agent = require('../models/agentModel')
 const User = require('../models/userModel')
-
+const secret = 'secret123'
 //@desc register new agent
 //@route POST api/agents
 //private
@@ -70,7 +70,6 @@ const createAccount = asyncHandler(async (req, res)=>{
             agency,
             email,
             password: hashedPassword,
-            token: generateToken(user._id)
         })
 
         if(user){
@@ -94,7 +93,7 @@ const loginAgent = asyncHandler(async(req,res)=>{
     const user = await User.findOne({email: email})
     if(user && (await bcrypt.compare(password, user.password))){
         res.status(200).json({
-            _id: user.id,
+            _id: user.id,      
             agency:user.agency,
             email:user.email,
             token: generateToken(user._id)
@@ -106,10 +105,10 @@ const loginAgent = asyncHandler(async(req,res)=>{
 })
 //generate token
  const generateToken = (id)=>{
-    const secret ='Mysecret123'
+    
 
     return jwt.sign({id}, secret,{
-        expiresIn: '2d',
+        expiresIn: '2d',      
     })
  }
 
@@ -118,5 +117,6 @@ const loginAgent = asyncHandler(async(req,res)=>{
 module.exports ={
     registerAgent,
     createAccount,
-    loginAgent
+    loginAgent,
+    secret
 }

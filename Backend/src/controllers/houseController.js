@@ -9,19 +9,28 @@ const User = require('../models/userModel')
 
 //desc Get Houses 
 //@route GET /api/houses
-//@access PRIVATE
-
-const getHouses = asyncHandler(async (req, res) => {
+//@access Public 
+//fetching houses from the clients
+const allHouses = asyncHandler(async (req, res) => {
     const houses = await House.find()
 
     res.status(200).json(houses)
 })
+//desc Get Houses 
+//@route GET /api/houses
+//@access Public 
+//fetching houses by agents
+const getAllHouses = asyncHandler (async (req, res)=>{
+    const houses = await House.find({user: req.user.id})
+    res.status(201).json(houses)
+})
+
 
 //desc Set Houses
 //@route POST /api/assets
 //@access Private
 const addHouse = asyncHandler(  async(req, res) => {
-    const { owner, desc, amount, quantity, category, location } = req.body
+    const { owner, desc, amount, quantity, category, location } = req.body     
 
     //check if fields are epmty
     if (!owner || !desc || !amount || !quantity || !category || !location) {
@@ -42,6 +51,7 @@ const addHouse = asyncHandler(  async(req, res) => {
             category,
             location,    
             image: imageUrl,
+            user: req.user.id 
            
         })
 
@@ -58,4 +68,6 @@ const addHouse = asyncHandler(  async(req, res) => {
 
 module.exports = {
     addHouse,
+    allHouses,
+    getAllHouses
 }

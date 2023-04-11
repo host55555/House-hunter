@@ -1,20 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const upload = require('../middlewares/uploads')
-const Houses = require('../models/house.model');
-const {addHouse} = require('../controllers/houseController')
+const House = require('../models/house.model');
+const {addHouse,allHouses,getAllHouses} = require('../controllers/houseController')
+const {protect} = require('../middlewares/protect')
 
 
-
-//REQUEST GET ALL THE HOUSES
-router.get("/allhouses", (req,res)=>{
-    Houses.find()
-    .then((house)=> res.status(200).json(house))
-    .catch((err)=> res.status(401).json(`Error: ${err}`));
-});
+//REQUEST GET ALL THE HOUSES by users
+router.get('/allhouses',allHouses)
+//get all houses by agents 
+router.get('/myproperties', protect, getAllHouses)
 
 //REQUEST ADD NEW HOUSE
-router.post('/addhouse',upload.single("image"), addHouse)
+router.post('/addhouse',protect,upload.single("image"), addHouse)
    
 
 //REQUEST FIND HOUSE BY ID AND UPDATE
