@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-
+const {adminProtect} = require('../middlewares/protect')
  const {registerAgent, createAccount, loginAgent, getAgent} = require('../controllers/agentController')
 
  //agent creating an account by admin
- router.post('/register',registerAgent)
+ router.post('/register',adminProtect, registerAgent)
  //agent credentials by agent
  router.post('/createAccount',createAccount)
  //agent login
