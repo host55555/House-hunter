@@ -2,16 +2,16 @@ import React, { useEffect,useState } from 'react'
 
 import House from './House'
 
-import houses from '../../assets/houses.json'
+
 const Houses = () => {
 
 
 
- {
-  /**
-   *   const [houses, setHouses]=useState(null);
-   * useEffect(()=>{
-    fetch('http://localhost:4000/house/')
+ 
+  
+    const [houses, setHouses]=useState(null);
+    useEffect(()=>{
+    fetch('http://localhost:4000/api/house/allhouses')
     .then(res=>{
        return res.json();
     })
@@ -20,9 +20,9 @@ const Houses = () => {
       setHouses(data)
     })
      },[])
-   * 
-   */
- } 
+   
+   
+ 
 
 
  
@@ -40,9 +40,9 @@ const Houses = () => {
           <option value="guest"> guest house</option>
         </select>
       </div>
-      <House houses={houses}/>
+     
 
-       {/*houses && <House houses={houses}/>*/}
+       {houses && <House houses={houses}/>}
     </div>
   )
 }

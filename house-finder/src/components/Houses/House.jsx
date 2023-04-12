@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 const House = ({ houses }) => {
-    const IM = "http://localhost:4000/public/uploads/"
-    let imgSrc = houses.houseImage;
-    let id = houses._id;
+    
+  
     return (
         <div>
             <div className='flex justify-center items-center'>
@@ -19,11 +18,10 @@ const House = ({ houses }) => {
                                          <Link to='gallery'>
                                         <img src={house.image} />
                                         </Link>
-                                        <h2 className='md:font-black'>price: {house.price}</h2>
-                                        <h4 className='text-xl md:font-semibold'>deposit: {house.deposit}</h4>
+                                        <h2 className='md:font-black'>Amount: {house.amount}</h2>
+                                        <h4 className='text-xl md:font-semibold'>category: {house.category}</h4>
                                         <p className='m-2 text-sm'>{house.desc}</p>
-                                        <h5 className='text-lg md:font-bold'>{house.location}</h5>
-                                        <p className='m-2 text-sm'>{house.agent}</p>
+                                        <h5 className='text-lg md:font-bold'>{house.location}</h5>                                      
 
                                     </div>
                                 
