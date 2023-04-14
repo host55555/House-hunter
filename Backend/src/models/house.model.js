@@ -8,7 +8,7 @@ const houseShema = new Schema({
     quantity: {type:String, required: true},
     category: {type:String, required: true},
     location: {type:String, required: true},
-    image:{type: String, required:true},
+    images:{type: [], required:true},
     user:{type: String}
    //owner,desc,amount,quantity,category,location,image    
        

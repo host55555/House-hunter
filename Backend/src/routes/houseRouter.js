@@ -12,7 +12,7 @@ router.get('/allhouses',allHouses)
 router.get('/myproperties', protect, getAllHouses)
 
 //REQUEST ADD NEW HOUSE
-router.post('/addhouse',protect,upload.single("image"), addHouse)
+router.post('/addhouse',protect,upload.array("images"), addHouse)
    
 
 //REQUEST FIND HOUSE BY ID AND UPDATE

@@ -1,5 +1,6 @@
 const express = require('express')
 const upload = require('../middlewares/uploads')
+
 const { uploadToCloudinary, removeFromCloudinary } = require('../services/cloudinary')
 
 const asyncHandler = require('express-async-handler')
@@ -39,10 +40,16 @@ const addHouse = asyncHandler(  async(req, res) => {
 
     }
     try {
+        const urls = [];
         //upload Image to cloudinary
-        const data = await uploadToCloudinary(req.file.path, "test-one")
+
+        for(let i = 0; i< req.files.length; i++){
+            const data = await uploadToCloudinary(req.files[i].path, "test-one")
+            urls.push(data.url)
+        }
+       
         //save Image url  to the database
-        const imageUrl = data.url;
+        const imageUrl = urls
         const house = new House({
             owner,
             desc,        
@@ -50,7 +57,7 @@ const addHouse = asyncHandler(  async(req, res) => {
             quantity,
             category,
             location,    
-            image: imageUrl,
+            images: imageUrl,
             user: req.user.id 
            
         })
