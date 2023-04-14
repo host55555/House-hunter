@@ -16,7 +16,7 @@ const House = ({ houses }) => {
                                
                                     <div className='bg-slate-100 my-3 md:my-5 mx-4 md:mx-8 p-2 md:p-5 w-52 md:w-60   rounded-lg shadow-lg shadow-black hover:shadow-sky-400'   key={{/*houses._id*/ }}>
                                          <Link to='gallery'>
-                                        <img src={house.image} />
+                                        <img src={house.images[0]} />
                                         </Link>
                                         <h2 className='md:font-black'>Amount: {house.amount}</h2>
                                         <h4 className='text-xl md:font-semibold'>category: {house.category}</h4>
