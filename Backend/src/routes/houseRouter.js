@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const upload = require('../middlewares/uploads')
 const House = require('../models/house.model');
-const {addHouse,allHouses,getAllHouses} = require('../controllers/houseController')
+const {addHouse,allHouses,getAllHouses,
+    getHouseById,houseUpdate,deleteHouse, getHouseByCategory} = require('../controllers/houseController')
 const {protect} = require('../middlewares/protect')
 
 
@@ -10,15 +11,17 @@ const {protect} = require('../middlewares/protect')
 router.get('/allhouses',allHouses)
 //get all houses by agents 
 router.get('/myproperties', protect, getAllHouses)
-
 //REQUEST ADD NEW HOUSE
 router.post('/addhouse',protect,upload.array("images"), addHouse)
-   
+//REQUEST FIND HOUSE BY ID 
+router.get('/:id',getHouseById)
+//find house by id and update
+router.put('/update/house/:id',protect,houseUpdate)
+//find house by id and delete
+router.delete('/delete/house/:id',protect, deleteHouse)
+//filter houses by category
+router.get('/houses/category/query', getHouseByCategory)
 
-//REQUEST FIND HOUSE BY ID AND UPDATE
-
-
-//DELETE HOUSE
 
 
 
