@@ -5,12 +5,12 @@ const Navbar = () => {
   return (
     <header>
     <div  className='md:flex w-[100] items-center bg-black md: text-white
-    justify-between py-[20px] md:px-[35px]'>
+    justify-between py-[15px] md:px-[25px]'>
         {/**logo */}
         <Link to='/'>
-        <h1 className="font-black text-2xl md:text-3xl m-5 flex  text-center  hover:text-pink-500
+        <h1 className="font-black text-2xl md:text-3xl m-2 flex  text-center  hover:text-pink-500
         ">
-          House Hunter{<Icons.Search className='m-2'/>}</h1>
+          House Hunter{<Icons.Search className='m-2 hidden md:visible'/>}</h1>
           </Link>
         
         

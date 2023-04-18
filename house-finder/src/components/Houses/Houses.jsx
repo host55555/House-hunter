@@ -28,9 +28,9 @@ const Houses = () => {
  
 
   return (
-    <div className='text-center pt-72 md:pt-40'>
-      <div className='md:flex justify-center mt-5'>
-        <h1 className='font-black md:text-3xl m-2'>Available Houses</h1>
+    <div className='text-center mt-1'>
+      <div className='md:flex justify-center mt-1'>
+        <h1 className='font-black md:text-3xl '>Available Houses</h1>
         <p className='md:text-xl m-2'>filter by:</p>
         <select id="categories" className='border bg-slate-300 rounded-sm h-8 m-2'>
           <option value="all">All</option>
