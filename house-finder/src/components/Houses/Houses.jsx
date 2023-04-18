@@ -1,31 +1,23 @@
 import React, { useEffect,useState } from 'react'
-
+import {useDispatch, useSelector} from "react-redux"
+import { getHouses } from '../../features/houseSlice'
 import House from './House'
 
 
 const Houses = () => {
+  const{houses, isLoading, isError} =useSelector((state)=>state.houses)
+  const dispatch = useDispatch()
 
+  useEffect(()=>{
+    if(isError){
+      console.log("some error occured!!")
+    }
+    dispatch(getHouses())
+  },[isError,dispatch])
 
-
- 
-  
-    const [houses, setHouses]=useState(null);
-    useEffect(()=>{
-    fetch('http://localhost:4000/api/house/allhouses')
-    .then(res=>{
-       return res.json();
-    })
-    .then(data =>{
-      console.log(data)
-      setHouses(data)
-    })
-     },[])
-   
-   
- 
-
-
- 
+  if(isLoading){
+    return <p>Loading data please wait</p>
+  }
 
   return (
     <div className='text-center mt-1'>

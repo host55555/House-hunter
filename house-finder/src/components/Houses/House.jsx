@@ -13,10 +13,10 @@ const House = ({ houses }) => {
 
 
                     {
-                        houses.map((house, key) => {
+                        houses.data.map((house, key) => {
                             return (
 
-                                <div key={{/*houses._id*/ }} className='grid grid-cols-1 md:grid-cols-2 gap-10 shadow-md shadow-black p-3 my-5 bg-white'>
+                                <div key={house._id } className='grid grid-cols-1 md:grid-cols-2 gap-10 shadow-md shadow-black p-3 my-5 bg-white'>
                                     <div className='grid grid-cols-1 md:grid-cols-2 gap-2 overflow-scroll md:overflow-hidden h-64 md:h-full '>
                                         <img src={house.images[0]} className='h-64 w-[400px] rounded-lg' />
                                         <img src={house.images[1]} className='h-64 w-[400px] rounded-lg'/>
