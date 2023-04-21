@@ -6,5 +6,5 @@ export const store = configureStore({
         auth:authReducer,
         property: propertyReducer
         
-    }
+    },
 })

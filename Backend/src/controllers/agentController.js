@@ -105,7 +105,7 @@ const loginAgent = asyncHandler(async(req,res)=>{
     
 
     return jwt.sign({id}, secret,{
-        expiresIn: '2d',      
+        expiresIn: '30d',      
     })
  }
 

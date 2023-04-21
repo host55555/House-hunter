@@ -14,19 +14,19 @@ const addProperty = async (houseData, token)=>{
     return response.data
 }
 //get agents properties 
-const allHouses = async(token)=>{
+const getAllHouses = async(token)=>{
     const config={
         headers:{
             Authorization:`Bearer ${token}`
         }
     }
-    const houses = await axios.get(API_URL2, config)
+    const response = await axios.get(API_URL2, config)
 
-    return houses
+    return response.data
 }
 
 const propertyService={
     addProperty,
-    allHouses
+    getAllHouses
 }
 export default propertyService
