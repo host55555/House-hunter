@@ -3,7 +3,7 @@ import { useState } from 'react'
 function AddProperty() {
 
     const [formData, setFormData] = useState({})
-    const [file, setFile] = useState(null)
+    const [files, setFiles] = useState(null)
 
     const onChange=(e)=>{
         setFormData(
@@ -11,14 +11,27 @@ function AddProperty() {
 
     };
     const handleFileChange = (e)=>{
-        setFile(e.target.files)
+        setFiles(e.target.elements.images.files)
     };
-    
+    const handleSubmit = async (e)=>{
+        e.preventDefault();
+        const houseData = new FormData();
+        houseData.append('owner', formData.owner);
+        houseData.append('desc',formData.desc);
+        houseData.append('amount',formData.amount);
+        houseData.append('quantity', formData.quantity);
+        houseData.append('location', formData.location)
+        houseData.append('category', formData.category);
+        for( let i=0; i<files.length; i++){
+            houseData.append('image', formData.files[i])
+        }
+        
+    }
     return (
         <div>
             <div className='flex justify-center m-3'>
 
-                <form onSubmit={onSubmit} className='shadow-sm shadow-black w-[400px] h-[450px] p-5'>
+                <form onSubmit={handleSubmit} className='shadow-sm shadow-black w-[400px] h-[450px] p-5'>
                     <h1 className='font-black text-3xl w-full flex  justify-center '><FaUser /> Create Account</h1>
                     <div className='border-t-2 mt-3 text-center'>
                         <input type="text"
@@ -61,6 +74,7 @@ function AddProperty() {
                             placeholder='property category'
                             id='images'
                             name='images'
+                            multiple
                             onChange={handleFileChange}
                             className='border-b-[1px] my-5 border-black text-left w-full' />
 

@@ -13,7 +13,7 @@ app.use(cors())
 //routes
 app.use('/api/house',houseRouter);
 app.use('/api/agents',agentRouter);   
-app.use('/api/admin', adminRouter);
+app.use('/api/admin', adminRouter);   
 
 
 const port =  4000

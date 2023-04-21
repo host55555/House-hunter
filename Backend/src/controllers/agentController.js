@@ -79,9 +79,7 @@ const createAccount = asyncHandler(async (req, res)=>{
             throw new Error('something went wrong!!!')
         }
     }else{
-        res.status(401)
-
-        throw new Error('Email is not registered Contact admin!!')
+        res.status(401).send('Email is not registered Contact admin!!')
     }
 })
 //@desc login user 
@@ -99,8 +97,7 @@ const loginAgent = asyncHandler(async(req,res)=>{
             token: generateToken(user._id)
         })
     }else{
-        res.status(401)
-        throw new Error('User Not found')
+        return res.status(401).send('User Not found')
     }
 })
 //generate token
