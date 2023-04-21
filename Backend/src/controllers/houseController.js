@@ -23,7 +23,7 @@ const allHouses = asyncHandler(async (req, res) => {
 //fetching houses by agents
 const getAllHouses = asyncHandler (async (req, res)=>{
     const houses = await House.find({user: req.user.id})
-    res.status(201).json(houses)
+    res.status(200).json(houses)
 })
 
 
