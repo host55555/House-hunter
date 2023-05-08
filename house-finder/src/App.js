@@ -23,7 +23,7 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/Feedback' element={<Feedback />} />
           <Route path='/footer' element={<Footer />} />
-          <Route path='/gallery' element={<Gallery />}/>
+          <Route path='/house/:id' element={<Gallery />}/>
         </Routes>
         
 

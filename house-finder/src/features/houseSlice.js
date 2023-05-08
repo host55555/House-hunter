@@ -3,6 +3,7 @@ import houseService from './houseService'
 
 const initialState ={
     houses: [],
+    house:null,
     isError: false,
     isSuccess:false,
     isLoading: false
@@ -19,6 +20,7 @@ export const getHouses = createAsyncThunk('houses/getAll', async(_,thunkAPI)=>{
         
     }
 })
+
 
  export const houseSlice = createSlice({
     name:'house',
@@ -39,9 +41,9 @@ export const getHouses = createAsyncThunk('houses/getAll', async(_,thunkAPI)=>{
         })
         .addCase(getHouses.rejected, (state,action)=>{
             state.isLoading = false
-            state.isError= true
-            
+            state.isError= true            
         })
+       
     }
  })
 

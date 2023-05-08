@@ -6,11 +6,12 @@ const getHouses = async() =>{
     const houses = await axios.get(API_URL)
      return houses
 
-
 }
 
+
 const houseService = {
-    getHouses
+    getHouses,
+    
 }
 
 export default houseService

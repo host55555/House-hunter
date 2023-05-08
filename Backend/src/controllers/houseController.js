@@ -27,6 +27,7 @@ const getAllHouses = asyncHandler (async (req, res)=>{
 })
 
 
+
 //desc Set Houses
 //@route POST /api/assets
 //@access Private
@@ -71,9 +72,13 @@ const addHouse = asyncHandler(  async(req, res) => {
     }
 })
 //get house by id
-const getHouseById = asyncHandler (async (req,res)=>{
+const houseId = asyncHandler (async (req,res)=>{
     const house = await House.findById(req.params.id)
-    if(!house) return res.status(404).json({"message":"house not found"})
+    if(!house){
+        res.status(400)
+        throw new Error("House not found!!")
+    }
+
     res.status(200).json(house)
 })
 //update house
@@ -151,7 +156,7 @@ module.exports = {
     addHouse,
     allHouses,    
     getAllHouses,   
-    getHouseById,
+    houseId,
     houseUpdate ,
     deleteHouse ,
     getHouseByCategory

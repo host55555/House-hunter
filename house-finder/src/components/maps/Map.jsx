@@ -25,7 +25,7 @@ const Map = ({ apiKey, center }) => {
   return (
     <div
       ref={mapRef}
-      style={{ width: "100%", height: "250px" }}
+      style={{ width: "100%", height: "200px" }}
     />
   );
 };
