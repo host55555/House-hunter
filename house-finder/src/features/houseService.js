@@ -10,7 +10,7 @@ const getHouses = async() =>{
 
 
 const houseService = {
-    getHouses,
+    getHouses
     
 }
 

@@ -14,7 +14,7 @@ const Map = ({ apiKey, center }) => {
     loader.load().then(() => {
       const options = {
         center: center,
-        zoom: 8,
+        zoom: 14,
       };
 
       const mapInstance = new window.google.maps.Map(mapRef.current, options);
@@ -25,7 +25,7 @@ const Map = ({ apiKey, center }) => {
   return (
     <div
       ref={mapRef}
-      style={{ width: "100%", height: "200px" }}
+      style={{ width: "500px", height: "300px" }}
     />
   );
 };

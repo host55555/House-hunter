@@ -1,29 +1,58 @@
-import React from 'react'
+import React,{useState}from 'react'
 import * as Icons from 'react-bootstrap-icons'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 const Navbar = () => {
+  const [query, setQuery] = useState('')
+  const [result, setResult] = useState([])
+
+  const handleSearch = async ()=>{
+    const response = await axios.get(`http://localhost:4000/api/house/search/${query}`)
+    if(response){
+      setResult(response.data)
+      
+    }
+    console.log(result)
+    
+    
+  }
   return (
     <header>
-    <div  className='md:flex w-[100] items-center bg-black md: text-white
-    justify-between py-[15px] md:px-[25px]'>
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-5 w-[100] items-center bg-slate-600 md:bg-slate-800 text-white
+    justify-center py-[15px] md:px-[25px] '>
         {/**logo */}
-        <Link to='/'>
-        <h1 className="font-black text-2xl md:text-3xl m-2 flex  text-center  hover:text-pink-500
+        <div className='text-center'>
+          <Link to='/'>
+            <h1 className="font-black text-2xl md:text-3xl m-2 flex  text-center  hover:text-pink-500
         ">
-          House Hunter{<Icons.Search className='m-2 hidden md:visible'/>}</h1>
+              House Hunter</h1>
           </Link>
-        
-        
-        <ul className=" text-center md:flex md:bg-transparent ">
-            <li className='text-xl m-2 hover:text-pink-500'><Link to='/'>Home</Link></li>
-            <li className='text-xl m-2 hover:text-pink-500'><Link to='about'>About</Link></li>
-            <li className='text-xl m-2 hover:text-pink-500'><Link to='feedback'>Advertise</Link></li>
-        </ul>
-        
-        <a href="#" className='text-xl bg-sky-600 rounded-xl hidden text-center'> Log In</a>
-    </div>
 
-</header>
+        </div>
+
+        <div className='flex p-2 rounded-lg w-72 md:w-full justify-center items-center'>
+          <input type="text" placeholder='search houses'
+          onChange={(e)=> setQuery(e.target.value)}
+          value={query} className='text-sm text-black rounded-lg w-full p-1' />
+          <button className='bg-blue-600 rounded-md ' onClick={handleSearch}
+          ><Icons.Search className='m-2' /></button>
+        </div>
+        <div className='overflow-x-scroll md:overflow-x-hidden'>
+        <ul className=" text-center flex ">
+          <li className='text-xl m-2 hover:text-pink-500'><Link to='/'>Home</Link></li>
+          <li className='text-xl m-2 hover:text-pink-500'><Link to='about'>About</Link></li>
+          <li className='text-xl m-2 hover:text-pink-500'><Link to='feedback'>Advertise</Link></li>
+          <li className='text-xl m-2 hover:text-pink-500'><Link to='feedback'>Help?</Link></li>
+          <li className='text-xl m-2 hover:text-pink-500'><Link to='feedback'>Sign&nbsp;up</Link></li>
+        </ul>
+
+        </div>
+       
+
+        <a href="#" className='text-xl bg-sky-600 rounded-xl hidden text-center'> Log In</a>
+      </div>
+
+    </header>
   )
 }
 

@@ -135,19 +135,21 @@ const deleteHouse = asyncHandler(async (req,res)=>{
 
     res.status(200).json({message:"House Deleted Successfully!!"})
 })
-//desc filter houses by category
+//desc search houses by category from the database
 //@route GET /api/houses
 //@access Public
-const getHouseByCategory= asyncHandler(async (req,res)=>{
-    const name = req.query.name.toLowerCase()
-    const houses = await House.find({category: name})
-    if(houses.length < 1){
+const searchCategory = asyncHandler (async (req,res)=>{
+    const {query} = req.params
+    const results = await House.find({category: new RegExp(query,'i')})//search house by category
+    if(!results){
         res.status(400)
-        throw new Error("No such category")
+        throw new Error('Category not found!!')
     }
-    res.status(200).json(houses)
+
+    res.status(200).json(results)
 
 })
+
 
 
 
@@ -159,5 +161,5 @@ module.exports = {
     houseId,
     houseUpdate ,
     deleteHouse ,
-    getHouseByCategory
+    searchCategory
 }
