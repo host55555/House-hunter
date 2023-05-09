@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
 
 
 import Map from '../maps/Map'
@@ -9,7 +10,7 @@ const Gallery = () => {
     const [house, setHouse] = useState(null)
     const apiKey = 'AIzaSyAxol9PIW-99Ie5kYEryAQXYntAo_urgmY'
     const center = { lat: -0.42013, lng: 36.94759 };
-
+    const [currentIndex, setCurrentIndex] = useState(0)
 
     useEffect(() => {
         const fetchHouse = async () => {
@@ -23,20 +24,36 @@ const Gallery = () => {
         }
         fetchHouse()
     }, [id])
+    const prevSlide = ()=>{
+        const isFirsttSlide = currentIndex === 0
+        const newIndex = isFirsttSlide ? house?.images.length -1 : currentIndex -1;
+        setCurrentIndex(newIndex)
+    }
+    const nextSlide = ()=>{
+        const isLastSlide = currentIndex === house?.images.length -1;
+        const newIndex = isLastSlide ? 0 : currentIndex + 1;
+        setCurrentIndex(newIndex)
+    }
     return (
         <div className=' pt-52 md:pt-20 bg-slate-50'>
             {house && (<h1 className='font-black text-black text-2xl mt-3'>{house.category.toUpperCase()}</h1>)}
             {house && (<div>
-                <div className='md:flex justify-evenly items-center md:h-[400px] w-full'>
+                <div className='md:flex justify-evenly items-center md:h-[500px] w-full'>
 
-                    <div className='md:flex overflow-scroll md:overflow-x-scroll md:overflow-y-hidden w-full md:w-[50%] h-[400px] md:h-[390px] shadow-lg shadow-black rounded-md'>
-
-                        <img src={house.images[0]} className='h-full w-full p-6 rounded-lg m-1' alt='loading' />
-                        <img src={house.images[1]} className='h-full w-full p-6 rounded-lg m-1' alt='loading' />
-                        <img src={house.images[2]} className='h-full w-full p-6 rounded-lg m-1' alt='loading' />
-                        <img src={house.images[3]} className='h-full w-full p-6 rounded-lg m-1' alt='loading' />
+                    <div className='max-w-[650px] md:h-[500px] w-full m-auto px-4 py-16 relative group'>
+                        <div style={{ background: `url(${house.images[currentIndex]})` }} className='w-full h-full rounded-2xl bg-center bg-cover bg-no-repeat duration-500'></div>
 
 
+                        {/**Left arrow */}
+                        <div className='hidden group-hover:block absolute top-[50%] -translate-x-0  translate-y-[-50%] left-5 text-2xl
+                        rounded-full p-2 bg-black/20 text-white cursor-pointer'>
+                            <BsChevronCompactLeft onClick={prevSlide} size={30} />
+                        </div>
+                        {/**Right arrow */}
+                        <div className='hidden group-hover:block absolute top-[50%] -translate-x-0  translate-y-[-50%] right-5 text-2xl
+                        rounded-full p-2 bg-black/20 text-white cursor-pointer'>
+                            <BsChevronCompactRight onClick={nextSlide} size={30} />
+                        </div>
 
                     </div>
                     <div>

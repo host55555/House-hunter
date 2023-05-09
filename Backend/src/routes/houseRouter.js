@@ -3,7 +3,7 @@ const router = express.Router();
 const upload = require('../middlewares/uploads')
 const House = require('../models/house.model');
 const {addHouse,allHouses,getAllHouses,
-    houseId,houseUpdate,deleteHouse, searchCategory} = require('../controllers/houseController')
+    houseId,houseUpdate,deleteHouse, searchCategory,sortAscOrder} = require('../controllers/houseController')
 const {protect} = require('../middlewares/protect')
 
 
@@ -21,6 +21,8 @@ router.put('/update/house/:id',protect,houseUpdate)
 router.delete('/delete/house/:id',protect, deleteHouse)
 //filter houses by category
 router.get('/search/:query', searchCategory)
+//sort by creteria
+router.get('/sort' , sortAscOrder)
 
 
 

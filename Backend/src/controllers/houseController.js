@@ -149,6 +149,20 @@ const searchCategory = asyncHandler (async (req,res)=>{
     res.status(200).json(results)
 
 })
+//sort houses in ascending order from different criteria
+const sortAscOrder = asyncHandler (async (req,res)=>{
+    const {query, sortBy} = req.query
+    const sortOptions={}
+    if(sortBy){
+        sortOptions[sortBy] = 1
+    }
+
+    const results = await House.find({ $text: {$search: query}}).sort(sortOptions)
+
+   !results ? res.status(404).json({message:"not found!!"}): (
+        res.status(201).json(results)
+   )   
+})    
 
 
 
@@ -161,5 +175,6 @@ module.exports = {
     houseId,
     houseUpdate ,
     deleteHouse ,
-    searchCategory
+    searchCategory,
+    sortAscOrder
 }
