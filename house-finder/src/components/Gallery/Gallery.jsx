@@ -41,7 +41,7 @@ const Gallery = () => {
                 <div className='md:flex justify-evenly items-center md:h-[500px] w-full'>
 
                     <div className='max-w-[650px] md:h-[500px] w-full m-auto px-4 py-16 relative group'>
-                        <div style={{ background: `url(${house.images[currentIndex]})` }} className='w-full h-full rounded-2xl bg-center bg-cover bg-no-repeat duration-500'></div>
+                        <div style={{ backgroundImage: `url(${house.images[currentIndex]})` }} className='w-full h-full rounded-2xl bg-center bg-cover bg-no-repeat duration-500'></div>
 
 
                         {/**Left arrow */}

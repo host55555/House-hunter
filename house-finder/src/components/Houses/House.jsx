@@ -13,7 +13,7 @@ const House = ({ houses }) => {
     return (
         <div>
             <div className='p-10 flex justify-center items-center '>
-                <div className='grid grid-cols-1 md:grid-cols-4 gap-2 justify-center items-center h-[60vh] overflow-y-scroll'>
+                <div className='grid grid-cols-1 md:grid-cols-4 gap-2 justify-center items-center h-[100vh] overflow-y-scroll'>
 
                     
 
