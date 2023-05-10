@@ -18,7 +18,7 @@ const Navbar = () => {
   }
   return (
     <header>
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-5 w-[100] items-center bg-slate-600 md:bg-slate-800 text-white
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-5 absolute w-[100%] items-center bg-slate-600 md:bg-slate-800 text-white
     justify-center py-[15px] md:px-[25px] '>
         {/**logo */}
         <div className='text-center'>
@@ -37,13 +37,12 @@ const Navbar = () => {
           <button className='bg-blue-600 rounded-md ' onClick={handleSearch}
           ><Icons.Search className='m-2' /></button>
         </div>
-        <div className='overflow-x-scroll md:overflow-x-hidden'>
+        <div className=''>
         <ul className=" text-center flex ">
           <li className='text-xl m-2 hover:text-pink-500'><Link to='/'>Home</Link></li>
           <li className='text-xl m-2 hover:text-pink-500'><Link to='about'>About</Link></li>
           <li className='text-xl m-2 hover:text-pink-500'><Link to='feedback'>Advertise</Link></li>
-          <li className='text-xl m-2 hover:text-pink-500'><Link to='feedback'>Help?</Link></li>
-          <li className='text-xl m-2 hover:text-pink-500'><Link to='feedback'>Sign&nbsp;up</Link></li>
+          <li className='text-xl m-2 hover:text-pink-500'><Link to='feedback'>Help?</Link></li>         
         </ul>
 
         </div>

@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react'
 import {useDispatch, useSelector} from "react-redux"
 import { getHouses } from '../../features/houseSlice'
 import House from './House'
-
+import Spinner from '../spinner/Spinner'
 
 const Houses = () => {
   const{houses, isLoading, isError} =useSelector((state)=>state.houses)
@@ -16,11 +16,11 @@ const Houses = () => {
   },[isError,dispatch])
 
   if(isLoading){
-    return <p>Loading data please wait</p>
+    return <Spinner/>
   }
 
   return (
-    <div className='text-center mt-1'>
+    <div className='text-center mt-1 bg-slate-200'>
       <div className='md:flex justify-center mt-1'>
         <h1 className='font-black md:text-3xl '>Available Houses</h1>
         <p className='md:text-xl m-2'>filter by:</p>

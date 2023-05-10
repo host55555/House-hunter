@@ -3,7 +3,7 @@ import * as Icons from 'react-bootstrap-icons'
 
 const Footer = () => {
   return (
-    <div className='block bg-black'>
+    <div className='block bg-black relative'>
     <div className='md:flex justify-around items-center md:divide-x md:divide-gray-300 text-white'>      
       <div className='m-2 md:m-5 p-5 text-left'>
          <h1 className='text-xl font-black'>Contacts</h1>

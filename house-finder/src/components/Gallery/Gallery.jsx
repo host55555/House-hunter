@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
-
+import Modal from './Modal'
+import './style.css'
 
 import Map from '../maps/Map'
 
 const Gallery = () => {
     const { id } = useParams()
     const [house, setHouse] = useState(null)
+    const [showModal, setShowModal] = useState(false)
     const apiKey = 'AIzaSyAxol9PIW-99Ie5kYEryAQXYntAo_urgmY'
     const center = { lat: -0.42013, lng: 36.94759 };
     const [currentIndex, setCurrentIndex] = useState(0)
@@ -24,23 +26,29 @@ const Gallery = () => {
         }
         fetchHouse()
     }, [id])
-    const prevSlide = ()=>{
+    const handleOpenModal = () => {
+        setShowModal(true)
+    }
+    const handleCloseModal = () => {
+        setShowModal(false)
+    }
+    const prevSlide = () => {
         const isFirsttSlide = currentIndex === 0
-        const newIndex = isFirsttSlide ? house?.images.length -1 : currentIndex -1;
+        const newIndex = isFirsttSlide ? house?.images.length - 1 : currentIndex - 1;
         setCurrentIndex(newIndex)
     }
-    const nextSlide = ()=>{
-        const isLastSlide = currentIndex === house?.images.length -1;
+    const nextSlide = () => {
+        const isLastSlide = currentIndex === house?.images.length - 1;
         const newIndex = isLastSlide ? 0 : currentIndex + 1;
         setCurrentIndex(newIndex)
     }
     return (
-        <div className=' pt-52 md:pt-20 bg-slate-50'>
-            {house && (<h1 className='font-black text-black text-2xl mt-3'>{house.category.toUpperCase()}</h1>)}
+        <div className=' pt-52 md:pt-20 bg-slate-200 '>
+            {house && (<h1 className='font-black text-black text-2xl '>House Page</h1>)}
             {house && (<div>
                 <div className='md:flex justify-evenly items-center md:h-[500px] w-full'>
 
-                    <div className='max-w-[650px] md:h-[500px] w-full m-auto px-4 py-16 relative group'>
+                    <div className='max-w-[800px] h-[70vh] md:h-[450px] w-full m-auto  relative group'>
                         <div style={{ backgroundImage: `url(${house.images[currentIndex]})` }} className='w-full h-full rounded-2xl bg-center bg-cover bg-no-repeat duration-500'></div>
 
 
@@ -56,19 +64,12 @@ const Gallery = () => {
                         </div>
 
                     </div>
-                    <div>
-
-                        <div className='text-center p-5 md:h-[390px] w-full'>
-                            <h1 className='font-bold text-2xl text-black'>Directions</h1>
-                            <Map apiKey={apiKey} center={center} className='w-full' />
-
-                        </div>
-                    </div>
 
 
                 </div>
 
-                <div className='mt-5 bg-sky-900'>
+                <div className='mt-1 bg-sky-900'>
+
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-5 justify-evenly items-center'>
                         <div>
                             <h1 className='font-black m-3 text-black'>DESCRIPTION</h1>
@@ -85,20 +86,25 @@ const Gallery = () => {
                         <div className='mx-3'>
                             <h2 className='font-black text-black m-3'>STATUS</h2>
                             <h4 className='bg-green-500 font-bold text-2xl text-white rounded-md p-2'>Vacant</h4>
-                            <button className='bg-sky-600  font-semibold text-white rounded-lg p-1 my-3 w-full'>Book</button>
+                            <button
+                                onClick={handleOpenModal} className='bg-sky-600  font-semibold text-white rounded-lg p-1 my-3 w-full'>Book</button>
                         </div>
 
 
                     </div>
+                    
 
+                        <div className='text-center p-5 md:h-full w-full'>
+                            <h1 className='font-bold text-2xl text-black'>Directions</h1>
+                            <Map apiKey={apiKey} center={center} className='w-full' />
+
+                        </div>
+            
 
                 </div>
 
-
-
-
-
             </div>)}
+            {showModal && <Modal closeModal={setShowModal} />}
 
 
 

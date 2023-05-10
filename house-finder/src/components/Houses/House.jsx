@@ -12,8 +12,8 @@ const House = ({ houses }) => {
 
     return (
         <div>
-            <div className='p-10 flex justify-center items-center '>
-                <div className='grid grid-cols-1 md:grid-cols-4 gap-2 justify-center items-center h-[100vh] overflow-y-scroll'>
+            <div className='p-10 sm:flex justify-center items-center '>
+                <div className='grid grid-cols-2 md:grid-cols-5  justify-around items-center h-[100vh] w-full overflow-scroll '>
 
                     
 
@@ -21,22 +21,24 @@ const House = ({ houses }) => {
                         houses?.data?.map((house, key) => {
                             return (
 
-                                <div key={house._id} className=' grid grid-cols-1 w-72 h-62 shadow-md shadow-black p-5 m-2 rounded-lg'>
+                                <div key={house._id} className=' grid grid-cols-1 w-32 md:w-52 h-60 shadow-md bg-white shadow-black p-1 md:p-2 m-2 rounded-sm'>
 
 
-                                    <div className='overflow-hidden h-52  my-3'>
-                                        <img src={house.images[0]} className='h-52 w-full rounded-lg ' />
+                                    <div className='overflow-hidden h-32 '>
+                                        <img src={house.images[0]} className=' h-full w-full rounded-sm ' />
                                     </div>
                                     <div className=''>
 
                                         <div className='text-center  my-3 grid grid-cols-1'>
                                             <div>
-                                                <h2 className='font-black'>Amount: {house.amount}</h2>
-                                                <h4 className='font-semibold '>category: {house.category}</h4>
-                                                <h5 className='font-bold'>Location: {house.location}</h5>
-                                                <div className='grid grid-cols-2 gap-4'>
-                                                    <h2 className='bg-red-700 text-white p-2 rounded-md'>No vacancy</h2>
-                                                    <button className='bg-blue-500 text-white p-2  w-full rounded-md'
+                                                <div className='grid grid-cols-2 gap-1'>
+                                                <h2 className='text-[10px] text-black md:font-black w-full'>Price: KES. {house.amount}</h2>
+                                                <h4 className=' text-[10px] text-black md:font-semibold w-full '> {house.category}</h4>                                                
+                                                </div>
+                                                <h5 className=' text-[10px] text-black md:font-bold w-full'>Location: {house.location}</h5>                                               
+                                                <div className='grid grid-cols-2 gap-2'>
+                                                    <h2 className='bg-red-700 text-white p-1 text-[10px]  rounded-md'>No vacancy</h2>
+                                                    <button className='bg-blue-500 text-white text-[10px] p-1  w-full rounded-md'
                                                         onClick={() => handleHouseSelect(house)}>View</button>
 
 

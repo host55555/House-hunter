@@ -24,12 +24,9 @@ function App() {
           <Route path='/Feedback' element={<Feedback />} />
           <Route path='/footer' element={<Footer />} />
           <Route path='/house/:id' element={<Gallery />}/>
-        </Routes>
-        
-
-        <Footer />
+        </Routes>        
     </Router>
-
+    <Footer />
     </div>
   );
 }
