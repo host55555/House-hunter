@@ -5,6 +5,7 @@ const connectDb =require('./src/config/db')
 const houseRouter = require('./src/routes/houseRouter')
 const agentRouter = require('./src/routes/agentRouter')
 const adminRouter = require('./src/routes/adminRouter')
+const clientRouter = require('./src/routes/clientRouter')
 //creating app
 const app = express();
 //middleware
@@ -13,7 +14,9 @@ app.use(cors())
 //routes
 app.use('/api/house',houseRouter);
 app.use('/api/agents',agentRouter);   
-app.use('/api/admin', adminRouter);   
+app.use('/api/admin', adminRouter);
+app.use('/api/clients', clientRouter);     
+
     
 
 const port =  4000           

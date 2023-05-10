@@ -15,7 +15,7 @@ const User = require('../models/userModel')
 const allHouses = asyncHandler(async (req, res) => {
     const houses = await House.find()
 
-    res.status(200).json(houses)
+    res.status(200).json(houses)    
 })
 //desc Get Houses 
 //@route GET /api/houses
