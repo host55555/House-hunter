@@ -3,7 +3,7 @@ const router = express.Router()
 const {Book, getClients} = require('../controllers/clientControllers')
 
 //client booking route
-router.post('/booking',Book)
+router.post('/booking/:id',Book)
 //fetch clients route
 router.get('/all', getClients)
 

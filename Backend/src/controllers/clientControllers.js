@@ -2,7 +2,7 @@ const express = require('express')
 const asyncHandler = require('express-async-handler')
 const Client = require('../models/clientModel')
 const nodemailer = require('nodemailer')
-
+const House = require('../models/house.model')
 //nodemailer transpoter using a fake tester
 /*const transpoter = nodemailer.createTransport({
     host: "smtp.ethereal.email",
@@ -21,22 +21,33 @@ const transpoter = nodemailer.createTransport({
     }
 })
 
+
+
 //clients Bookings
 const Book = asyncHandler (async ( req, res)=>{
     const {fullName, phoneNumber, email,duration} = req.body
-
+    const id = req.params.id;
+   
+    
     if(!fullName || !phoneNumber || !email || !duration){
         res.status(400).json({message: "All fields are required!!!"})
     }
-    try{
-        const client = new Client({
+    
+    try{  
+        const house = await House.find({_id: id});       
+        const user = house.user;
+        
+       
+      const client = new Client({
             fullName,
             phoneNumber,
             email,
-            duration
+            duration,
+            house:id,
+            agency: user,
         })
-        await client.save()
-        //send email to client after Booking
+        await client.save()         
+          //send email to client after Booking
         /*const mailOptions ={
             from:'yasmin.stiedemann@ethereal.email',
             to: email,
@@ -45,17 +56,17 @@ const Book = asyncHandler (async ( req, res)=>{
         }*/
         const mailOptions ={
             from:'househunterplatform@gmail.com',
-            to: email,
+            to: email,     
             subject: "House Booking",
             text: `Hey ${fullName} you have successfully booked a house for ${duration}. From house hunter platform. Hope you Enjoy your stay.
-
-            from admin,
+            kindly reach out to your property agent before three days for more information.
+            House details
+            from Admin,
             Ken
             `
         }
-
         await transpoter.sendMail(mailOptions)
-        res.status(201).json({message:'Booked Successfully'})
+        res.status(201).json({message:"Booking Successful"})
 
     }catch(error){
         res.status(400).json(error)

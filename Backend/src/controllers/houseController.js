@@ -32,7 +32,8 @@ const getAllHouses = asyncHandler (async (req, res)=>{
 //@route POST /api/assets
 //@access Private
 const addHouse = asyncHandler(  async(req, res) => {
-    const { owner, desc, amount, quantity, category, location } = req.body     
+    const { owner, desc, amount, quantity, category, location } = req.body  
+    
 
     //check if fields are epmty
     if (!owner || !desc || !amount || !quantity || !category || !location) {

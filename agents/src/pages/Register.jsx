@@ -48,7 +48,7 @@ const Register = () => {
             dispatch(register(userData))
         }
     }
-    const changeRoute = ()=>{
+    const changeRoute = ()=>{      
         navigate('/signin')
     }
   return (
