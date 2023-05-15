@@ -3,7 +3,6 @@ import houseService from './houseService'
 
 const initialState ={
     houses: [],
-    house:null,
     isError: false,
     isSuccess:false,
     isLoading: false,
@@ -14,7 +13,8 @@ const initialState ={
 export const getHouses = createAsyncThunk('houses/getAll', async(_,thunkAPI, query='')=>{
     try {
         
-        return await houseService.getHouses(query)
+        const response = await houseService.getHouse(query)
+        return response;
         
     } catch (error) {
         console.log(error)

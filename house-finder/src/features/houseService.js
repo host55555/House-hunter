@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 //const get houses
-const getHouses = async(query) =>{
+const getHouse = async(query) =>{
     let endpoint =`http://localhost:4000/api/house/all-houses`
 
     if(query !== ''){
@@ -15,7 +15,7 @@ const getHouses = async(query) =>{
 
 
 const houseService = {
-    getHouses
+    getHouse
     
 }
 

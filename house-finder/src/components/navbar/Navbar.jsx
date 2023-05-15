@@ -27,11 +27,11 @@ const Navbar = () => {
         </div>
 
         <form onSubmit={handleSearch}className='flex p-2 rounded-lg w-72 md:w-full justify-center items-center'>
-          <input type="text" placeholder='search houses'
+          <input type="text" placeholder='search'
           onChange={(e)=> setQuery(e.target.value)}
           value={query} className='text-sm text-black rounded-t-lg w-full p-1' />
-          <button className='bg-blue-600 rounded-md ' type='submit'
-          ><Icons.Search className='m-2' /></button>
+          <button className='bg-blue-600 rounded-md flex p-2' type='submit'
+          ><Icons.Search className='m-2' />Search</button>
         </form>
         <div className=''>
         <ul className=" text-center flex ">
