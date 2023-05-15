@@ -4,6 +4,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { FaSignInAlt } from 'react-icons/fa'
 import { login, reset } from '../features/authentication/authSlice'
+import Spinner from '../components/spinner/Spinner'
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -46,7 +47,7 @@ const Login = () => {
 
     }
     if(isLoading){
-        toast.info("Loading...")
+        <Spinner/>
     }
     const changeRoute = () => {
         navigate('/signup')

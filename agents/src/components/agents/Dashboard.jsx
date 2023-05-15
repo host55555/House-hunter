@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getAllHouses, reset} from '../../features/property/propertySlice'
 import { toast } from 'react-toastify'
 import Property from './Property'
-
+import Spinner from '../spinner/Spinner'
 
 function Dashboard() {
     const navigate= useNavigate()
@@ -23,7 +23,7 @@ function Dashboard() {
     },[user,navigate,isError,dispatch])
 
     if(isLoading){
-        toast.info("Loading...")
+        <Spinner/>
     }
   return (
     <div>

@@ -28,6 +28,9 @@ const Navbar = () => {
               <li className='text-white mx-5'>
                 <Link to="account">Account</Link>
               </li>
+              <li className='text-white mx-5'>
+                <button onClick={onLogout}>Log out</button>
+              </li>
             </>
           ):(
             <>

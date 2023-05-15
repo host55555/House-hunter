@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import Spinner from '../components/spinner/Spinner'
 
 import { login, reset } from '../features/auth/authSlice'
 
@@ -46,7 +47,8 @@ const Login = () => {
 
     }
     if(isLoading){
-        toast.info("Loading...")
+        <Spinner/>
+
     }
     const changeRoute = () => {
         navigate('/signup')

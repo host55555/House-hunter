@@ -4,7 +4,7 @@ import { useNavigate, Link} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import {FaUser} from 'react-icons/fa'
 import {register,reset} from'../features/authentication/authSlice'
-
+import Spinner from '../components/spinner/Spinner'
 
 const Register = () => {
     const[formData, setFormData] = useState({
@@ -50,6 +50,9 @@ const Register = () => {
     }
     const changeRoute = ()=>{      
         navigate('/signin')
+    }
+    if(isLoading){
+        <Spinner/>
     }
   return (
     <div className='flex justify-center m-3'>

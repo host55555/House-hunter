@@ -31,7 +31,7 @@ function AddProperty() {
             houseData.append('images',files[i])
         }
         dispatch(addProperty(houseData))
-        toast.success("Propert Added successfully")
+        toast.success("Propert Added successfully!!")
         navigate('/')
         
         
