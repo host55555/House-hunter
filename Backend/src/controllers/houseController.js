@@ -14,7 +14,7 @@ const User = require('../models/userModel')
 //fetching houses from the clients
 const allHouses = asyncHandler(async (req, res) => {
     const {query} = req.query
-    const searchQuery = query ?  {$regex:query, $options:'i'} : "";
+   let searchQuery = query ?  {$regex:query, $options:'i'} : "";
     const searchFields ={
         $or:[
             {location:searchQuery},
