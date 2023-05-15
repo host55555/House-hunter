@@ -5,15 +5,16 @@ import House from './House'
 import Spinner from '../spinner/Spinner'
 
 const Houses = () => {
-  const{houses, isLoading, isError} =useSelector((state)=>state.houses)
+  const{houses, isLoading, isError,query} =useSelector((state)=>state.houses)
   const dispatch = useDispatch()
 
   useEffect(()=>{
     if(isError){
       console.log("some error occured!!")
     }
-    dispatch(getHouses())
-  },[isError,dispatch])
+    dispatch(getHouses(query))
+    
+  },[isError,dispatch,query])
 
   if(isLoading){
     return <Spinner/>

@@ -13,7 +13,16 @@ const User = require('../models/userModel')
 //@access Public 
 //fetching houses from the clients
 const allHouses = asyncHandler(async (req, res) => {
-    const houses = await House.find()
+    const {query} = req.query
+    const searchQuery = query ?  {$regex:query, $options:'i'} : "";
+    const searchFields ={
+        $or:[
+            {location:searchQuery},
+            {category:searchQuery}
+        ],
+    }
+
+    const houses = await House.find(searchQuery ? searchFields : {})
 
     res.status(200).json(houses)    
 })
@@ -139,9 +148,15 @@ const deleteHouse = asyncHandler(async (req,res)=>{
 //desc search houses by category from the database
 //@route GET /api/houses
 //@access Public
-const searchCategory = asyncHandler (async (req,res)=>{
-    const {query} = req.params
-    const results = await House.find({category: new RegExp(query,'i')})//search house by category
+const searchHouses = asyncHandler (async (req,res)=>{
+    const query = req.query.query
+    const results = await House.find({
+        $or:[
+            {location:{$regex: query, $options:'i'}},
+            {category:{$regex: query, $options:'i'}}
+        ]
+    
+    })//search houses
     if(!results){
         res.status(400)
         throw new Error('Category not found!!')
@@ -176,6 +191,6 @@ module.exports = {
     houseId,
     houseUpdate ,
     deleteHouse ,
-    searchCategory,
+    searchHouses,
     sortAscOrder
 }

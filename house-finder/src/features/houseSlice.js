@@ -6,14 +6,15 @@ const initialState ={
     house:null,
     isError: false,
     isSuccess:false,
-    isLoading: false
+    isLoading: false,
+    query:''
     
 }
 //get all houses
-export const getHouses = createAsyncThunk('houses/getAll', async(_,thunkAPI)=>{
+export const getHouses = createAsyncThunk('houses/getAll', async(_,thunkAPI, query='')=>{
     try {
-
-        return await houseService.getHouses()
+        
+        return await houseService.getHouses(query)
         
     } catch (error) {
         console.log(error)

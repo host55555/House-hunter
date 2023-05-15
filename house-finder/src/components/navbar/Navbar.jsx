@@ -1,21 +1,17 @@
 import React,{useState}from 'react'
 import * as Icons from 'react-bootstrap-icons'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import {useDispatch} from 'react-redux'
+import { getHouses } from '../../features/houseSlice'
 const Navbar = () => {
   const [query, setQuery] = useState('')
-  const [result, setResult] = useState([])
-
-  const handleSearch = async ()=>{
-    const response = await axios.get(`http://localhost:4000/api/house/search/${query}`)
-    if(response){
-      setResult(response.data)
-      
-    }
-    console.log(result)
-    
-    
+  const dispatch = useDispatch()
+  const handleSearch = (e)=>{
+      e.preventDefault()
+      dispatch(getHouses(query))
+     
   }
+  
   return (
     <header>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-5 absolute w-[100%] items-center bg-slate-600 md:bg-slate-800 text-white
@@ -30,13 +26,13 @@ const Navbar = () => {
 
         </div>
 
-        <div className='flex p-2 rounded-lg w-72 md:w-full justify-center items-center'>
+        <form onSubmit={handleSearch}className='flex p-2 rounded-lg w-72 md:w-full justify-center items-center'>
           <input type="text" placeholder='search houses'
           onChange={(e)=> setQuery(e.target.value)}
-          value={query} className='text-sm text-black rounded-lg w-full p-1' />
-          <button className='bg-blue-600 rounded-md ' onClick={handleSearch}
+          value={query} className='text-sm text-black rounded-t-lg w-full p-1' />
+          <button className='bg-blue-600 rounded-md ' type='submit'
           ><Icons.Search className='m-2' /></button>
-        </div>
+        </form>
         <div className=''>
         <ul className=" text-center flex ">
           <li className='text-xl m-2 hover:text-pink-500'><Link to='/'>Home</Link></li>
