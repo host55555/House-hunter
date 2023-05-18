@@ -13,16 +13,8 @@ const User = require('../models/userModel')
 //@access Public 
 //fetching houses from the clients
 const allHouses = asyncHandler(async (req, res) => {
-    const {query} = req.query
-   let searchQuery = query ?  {$regex:query, $options:'i'} : "";
-    const searchFields ={
-        $or:[
-            {location:searchQuery},
-            {category:searchQuery}
-        ],
-    }
-
-    const houses = await House.find(searchQuery ? searchFields : {})
+   
+    const houses = await House.find()
 
     res.status(200).json(houses)    
 })
@@ -149,7 +141,7 @@ const deleteHouse = asyncHandler(async (req,res)=>{
 //@route GET /api/houses
 //@access Public
 const searchHouses = asyncHandler (async (req,res)=>{
-    const query = req.query.query
+    const query = req.params.query
     const results = await House.find({
         $or:[
             {location:{$regex: query, $options:'i'}},

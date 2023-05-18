@@ -20,7 +20,7 @@ router.put('/update/house/:id',protect,houseUpdate)
 //find house by id and delete
 router.delete('/delete/house/:id',protect, deleteHouse)
 //filter houses 
-router.get('/search-houses', searchHouses)
+router.get('/search-houses/:query', searchHouses)
 //sort by creteria
 router.get('/sort' , sortAscOrder)
 

@@ -1,21 +1,22 @@
 import axios from 'axios'
-
+const APIURL = 'http://localhost:4000/api/house/all-houses'
 
 //const get houses
-const getHouse = async(query) =>{
-    let endpoint =`http://localhost:4000/api/house/all-houses`
+const getHouse = async() =>{
+    const response = await axios.get(APIURL)
 
-    if(query !== ''){
-        endpoint += `?query=${query}`
-    }
-    const houses = await axios.get(endpoint)
-     return houses
+    return response
+   
 
 }
-
+const searchHouses = async (query) =>{
+    const response = await axios.get(`http://localhost:4000/api/house/search-houses/${query}`)
+    return response
+}
 
 const houseService = {
-    getHouse
+    getHouse,
+    searchHouses
     
 }
 
