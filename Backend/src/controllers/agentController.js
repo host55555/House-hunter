@@ -4,6 +4,14 @@ const asyncHandler = require('express-async-handler')
 const Agent = require('../models/agentModel')
 const User = require('../models/userModel')
 const secret = 'secret123'
+//transpoter
+const transpoter = nodemailer.createTransport({
+    service:'gmail',
+    auth:{
+        user:"househunterplatform@gmail.com",
+        pass:"bddqxuygidmvqjmv"
+    }
+})
 //@desc register new agent
 //@route POST api/agents
 //private
@@ -108,6 +116,26 @@ const loginAgent = asyncHandler(async(req,res)=>{
         expiresIn: '30d',      
     })
  }
+ //reset password 
+ const resetPassword = asyncHandler(async(req,res)=>{
+    const {email} = req.body
+    try {
+        //find user by email
+        const user = await User.findOne({email})
+        if(!user){
+            return res.status(404).json({message:"User not found!!"})
+        }
+        //generate OTP
+        const otpCode = generateOTP();
+        //update user's register Token
+        user.resetToken = otpCode;
+        await user.save();
+
+        //sendOTP via email
+    } catch (error) {
+        
+    }
+ })
 
 
 

@@ -55,9 +55,9 @@ const Houses = () => {
 
   return (
     <div className='text-center mt-1 bg-slate-200'>
-      <div className='grid grid-cols-1 justify-around items-center mt-1'>
+      <div className='grid grid-cols-1 justify-center items-center mt-1'>
         <h1 className='font-black md:text-3xl text-black'>All Houses</h1>
-        <div className='flex p-2 rounded-lg w-72 md:w-full text-black justify-center items-center'>
+        <div className='flex p-2 rounded-lg w-72 md:w-[50%] text-black justify-center items-center'>
           <input type="text" placeholder='search houses by e.g, location, category...'
             onChange={handleSearch}
             className='text-sm text-black rounded-t-lg w-full p-1' />

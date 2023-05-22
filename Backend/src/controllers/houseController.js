@@ -170,7 +170,15 @@ const sortAscOrder = asyncHandler (async (req,res)=>{
    !results ? res.status(404).json({message:"not found!!"}): (
         res.status(201).json(results)
    )   
-})    
+})   
+const filterBedsitters = asyncHandler(async(req,res)=>{
+    const houses = await House.find({category:'Bedsitter'})
+    res.status(200).json(houses)
+}) 
+const filterSingles = asyncHandler(async(req,res)=>{
+    const houses = await House.find({category:'Singles'})
+    res.status(200).json(houses)
+})
 
 
 
