@@ -116,6 +116,8 @@ const loginAgent = asyncHandler(async(req,res)=>{
         expiresIn: '30d',      
     })
  }
+ //mail options
+ 
  //reset password 
  const resetPassword = asyncHandler(async(req,res)=>{
     const {email} = req.body
@@ -132,6 +134,35 @@ const loginAgent = asyncHandler(async(req,res)=>{
         await user.save();
 
         //sendOTP via email
+        const mailOptions={
+            from:'househunterplatform@gmail.com',
+            to:email,
+            subject:"Password Reset OTP",
+            text:  `Your OTP code is:${otpCode}`
+        }
+        await transpoter.sendMail(mailOptions)
+        res.status(200).json({message:"OTP code has been sent to your email"})
+    } catch (error) {
+        
+    }
+ })
+ const verifyResetPassword = asyncHandler(async(req,res)=>{
+    const {email,otpCode,newPassword} = req.body
+
+    try {
+        const user = await User.findOne({email})
+        if(!user){
+            res.status(404).json({message:"user not found"})            
+        }
+        //verify OTP code
+        if(user.resetToken !== otpCode){
+            res.status(400).json({message:"Invalid OTP code"})
+        }
+        //update user's password
+        user.password = newPassword;
+        user.resetToken='';
+        await user.save();
+        res.status(201).json({message:"Password reset successful"})
     } catch (error) {
         
     }
