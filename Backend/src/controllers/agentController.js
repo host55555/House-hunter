@@ -4,6 +4,9 @@ const asyncHandler = require('express-async-handler')
 const Agent = require('../models/agentModel')
 const User = require('../models/userModel')
 const secret = 'secret123'
+const otpGenerator = require('otp-generator')
+const nodemailer = require('nodemailer')
+const validator = require('email-validator')
 //transpoter
 const transpoter = nodemailer.createTransport({
     service:'gmail',
@@ -12,6 +15,10 @@ const transpoter = nodemailer.createTransport({
         pass:"bddqxuygidmvqjmv"
     }
 })
+//validate email
+const validateEmail=(email)=>{
+    return validator.validate(email)
+}
 //@desc register new agent
 //@route POST api/agents
 //private
@@ -117,13 +124,22 @@ const loginAgent = asyncHandler(async(req,res)=>{
     })
  }
  //mail options
- 
+ const generateOTP=()=>{
+    return otpGenerator.generate(6,{digits:true,upperCaseAlphabets:false,lowerCaseAlphabets:false,specialChars:false})
+ }
  //reset password 
  const resetPassword = asyncHandler(async(req,res)=>{
     const {email} = req.body
+    const isValidEmail = validateEmail(email);
+    
+
     try {
+
+        if(!isValidEmail){
+            res.status(400).json({message:"Email is invalid!!"})
+        }
         //find user by email
-        const user = await User.findOne({email})
+        const user = await User.findOne({email:email})
         if(!user){
             return res.status(404).json({message:"User not found!!"})
         }
@@ -143,7 +159,7 @@ const loginAgent = asyncHandler(async(req,res)=>{
         await transpoter.sendMail(mailOptions)
         res.status(200).json({message:"OTP code has been sent to your email"})
     } catch (error) {
-        
+        res.status(400).json(error)
     }
  })
  const verifyResetPassword = asyncHandler(async(req,res)=>{
@@ -158,10 +174,20 @@ const loginAgent = asyncHandler(async(req,res)=>{
         if(user.resetToken !== otpCode){
             res.status(400).json({message:"Invalid OTP code"})
         }
+       //hashnew password
+       const salt = await bcrypt.genSalt(10)
+       const hashedPassword = await bcrypt.hash(newPassword,salt)
         //update user's password
-        user.password = newPassword;
+        user.password = hashedPassword;
         user.resetToken='';
         await user.save();
+        const mailOptions={
+            from:'househunterplatform@gmail.com',
+            to:email,
+            subject:"Password reset Successful",
+            text:  `Your have successfully reset your password.`
+        }
+        await transpoter.sendMail(mailOptions)
         res.status(201).json({message:"Password reset successful"})
     } catch (error) {
         
@@ -174,5 +200,7 @@ module.exports ={
     registerAgent,
     createAccount,
     loginAgent,
-    secret
+    secret,
+    resetPassword,
+    verifyResetPassword
 }

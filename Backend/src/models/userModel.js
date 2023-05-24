@@ -5,7 +5,7 @@ const userShema = new Schema({
     agency:{type:String, required:true},
     email:{type:String, required:true},
     password:{type:String, required:true},
-    resetToken:{String},
+    resetToken:{type:String},
     
 });
 
