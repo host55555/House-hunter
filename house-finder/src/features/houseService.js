@@ -17,7 +17,7 @@ const searchHouses = async (query) =>{
 const houseService = {
     getHouse,
     searchHouses
-    
+        
 }
 
 export default houseService

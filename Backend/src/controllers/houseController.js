@@ -192,5 +192,6 @@ module.exports = {
     houseUpdate ,
     deleteHouse ,
     searchHouses,
-    sortAscOrder
+    sortAscOrder,
+    filterBedsitters
 }

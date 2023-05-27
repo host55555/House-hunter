@@ -3,7 +3,7 @@ const router = express.Router();
 const upload = require('../middlewares/uploads')
 const House = require('../models/house.model');
 const {addHouse,allHouses,getAllHouses,
-    houseId,houseUpdate,deleteHouse, searchHouses,sortAscOrder} = require('../controllers/houseController')
+    houseId,houseUpdate,deleteHouse, searchHouses,sortAscOrder,filterBedsitters} = require('../controllers/houseController')
 const {protect} = require('../middlewares/protect')
 
 
@@ -23,6 +23,8 @@ router.delete('/delete/house/:id',protect, deleteHouse)
 router.get('/search-houses/:query', searchHouses)
 //sort by creteria
 router.get('/sort' , sortAscOrder)
+//filter bedsitters
+router.get('/bedsitters',filterBedsitters)
 
 
 
