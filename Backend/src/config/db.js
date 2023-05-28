@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-
-let mongoURL = 'mongodb+srv://kenneth:E9zb3q3340@cluster0.jznelf8.mongodb.net/House-finder'
+require('dotenv/config')
+let mongoURL = process.env.MONGO_URL
 mongoose.connect(mongoURL)
 
 let db = mongoose.connection;

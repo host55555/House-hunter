@@ -1,8 +1,9 @@
 const cloudinary = require('cloudinary').v2
+require('dotenv/config')
 cloudinary.config({
-    cloud_name: "dbb7ffclc",
-    api_key: "971663865859441",
-    api_secret: "nGB_zTLeGUuX8M8MVvQnEiBg0Xo"
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
 })
 
 uploadToCloudinary = (path, folder) => {
