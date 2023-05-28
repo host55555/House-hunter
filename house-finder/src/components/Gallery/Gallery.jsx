@@ -17,7 +17,7 @@ const Gallery = () => {
     useEffect(() => {
         const fetchHouse = async () => {
             try {
-                const response = await fetch(`http://localhost:4000/api/house/house/${id}`)
+                const response = await fetch(`/api/house/house/${id}`)
                 const data = await response.json()
                 setHouse(data)
             } catch (error) {
