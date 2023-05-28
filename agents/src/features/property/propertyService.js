@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const API_URL1 = 'http://localhost:4000/api/house/addhouse'
-const API_URL2 = 'http://localhost:4000/api/house/myproperties'
+const API_URL1 = '/api/house/addhouse'
+const API_URL2 = '/api/house/myproperties'
 //add house
 const addProperty = async (houseData, token)=>{
     const config={

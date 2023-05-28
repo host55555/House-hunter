@@ -7,7 +7,7 @@ const clientSchema = new Schema({
     email:{type:String,required:true},
     duration:{type:String, required: true},
     house:{type:String},
-    agency:{type:String},
+    agency:{type:String},      
        
 })
 

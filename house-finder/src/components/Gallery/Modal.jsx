@@ -11,7 +11,7 @@ function Modal({ closeModal }) {
    
 
     const onSubmit = async (e) => {
-      
+      e.preventDefault();
         const Client = {
             fullName:fullName,
             phoneNumber:phoneNumber,

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const API_URL = 'http://localhost:4000/api/agents/createAccount'
-const APILOGIN='http://localhost:4000/api/agents/login'
+const API_URL = '/api/agents/createAccount'
+const APILOGIN='/api/agents/login'
 
 //create user account
 const register= async(userData)=>{
