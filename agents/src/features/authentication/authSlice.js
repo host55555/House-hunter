@@ -49,6 +49,19 @@ export const logout= createAsyncThunk('auth/logout',
 async () =>{
      await authService.logout()
 })
+export const sendCode = createAsyncThunk('code/pass-reset',async(email, thunkAPI)=>{
+     try{
+          const response = await authService.sendCode(email)
+          return response
+     }catch(error){
+          const message = (
+               error.response && error.response.data && 
+               error.response.data.message ) || error.message 
+               || error.toString()
+
+               return thunkAPI.rejectWithValue(message)
+     }
+})
 
 export const authSlice = createSlice({
      name:'auth',
@@ -78,6 +91,7 @@ export const authSlice = createSlice({
                state.isSuccess=false
                state.message=action.payload
                state.user=null
+               state.isError=true
           })
           //login
           .addCase(login.pending,(state)=>{
@@ -94,12 +108,29 @@ export const authSlice = createSlice({
                state.isSuccess=false
                state.message=action.payload
                state.user=null
+               state.isError=true
           })
           //logout
           .addCase(logout.fulfilled, (state)=>{
                state.user=null
           })
+          //send code
+          .addCase(sendCode.pending,(state)=>{
+               state.isLoading = true
+          })
+          .addCase(sendCode.fulfilled,(state,action)=>{
+               state.isLoading= false
+               state.isSuccess= true
+               state.message=action.payload
+          })
+          .addCase(sendCode.rejected,(state,action)=>{
+               state.isLoading=false
+               state.isSuccess=false
+               state.message=action.payload
+               state.isError=true
+          })
      }
+
 })
 export const {reset} = authSlice.actions
 
