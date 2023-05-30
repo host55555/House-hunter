@@ -1,7 +1,8 @@
 import axios from 'axios'
 
-const API_URL = '/api/agents/createAccount'
-const APILOGIN = '/api/agents/login'
+const API_URL = 'http://localhost:4000/api/agents/createAccount'
+const APILOGIN = 'http://localhost:4000/api/agents/login'
+const API_RESET = 'http://localhost:4000/api/agents/reset-password'
 
 //create user account
 const register = async (userData) => {
@@ -26,7 +27,7 @@ const logout = () => {
 }
 //send code for password reset via email
 const sendCode = async (email) => {
-    const response = await axios.post(`/api/agents/reset-password`, email)
+    const response = await axios.post(API_RESET, email)
     return response.data
 }
 

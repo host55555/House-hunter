@@ -26,7 +26,7 @@ const Houses = () => {
   if(isLoading){
     return <Spinner/>
   }*/
-  const URL = '/api/house/all-houses'
+  const URL = 'http://localhost:4000/api/house/all-houses'
   const [houses, setHouses] = useState([])
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const Houses = () => {
   const handleSearch = async (e) => {
     let query = e.target.value
     if (query) {
-      let result = await axios.get(`api/house/search-houses/${query}`)
+      let result = await axios.get(`http://localhost:4000/api/house/search-houses/${query}`)
       if (result) {
         setHouses(result)
       }
