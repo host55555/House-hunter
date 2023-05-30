@@ -8,6 +8,8 @@ import Dashboard from './components/agents/Dashboard';
 import Account from './components/agents/Account';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import PasswordReset from './pages/PasswordReset'
+import NewPassword from './pages/NewPassword';
 function App() {
   return (
     <div className="App">
@@ -21,6 +23,8 @@ function App() {
           <Route path='/addhouse' element={<AddProperty/>}/>
           <Route path='/signup'  element={<Register/>}/>
           <Route path='/signin'  element={<Login/>}/>
+          <Route path='/reset'  element={<PasswordReset/>}/>
+          <Route path='/new-password'  element={<NewPassword/>}/>
 
 
         </Routes>

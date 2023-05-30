@@ -78,7 +78,8 @@ const Login = () => {
                     className='w-full bg-blue-600 text-2xl font-semibold p-2 rounded-md text-white'>
                     Login
                 </button>
-                <button onClick={changeRoute} className='text-blue-600 hover:text-rose-700'>Don't have an account? Sign up.</button>
+                <button onClick={changeRoute} className='text-blue-600 hover:text-emerald-700'>Don't have an account? Sign up.</button>
+                <button onClick={()=> navigate('/reset')} className='text-red-600 hover:text-orange-400'>Forgot Password? Reset</button>
             </form>
         </div>
     )
