@@ -3,12 +3,12 @@ const jwt = require('jsonwebtoken')
 const asyncHandler = require('express-async-handler')
 const Agent = require('../models/agentModel')
 const User = require('../models/userModel')
-const secret = 'secret123'
+const secret = process.env.SECRET
 const otpGenerator = require('otp-generator')
 const nodemailer = require('nodemailer')
 const validator = require('email-validator')
 //transpoter
-const transpoter = nodemailer.createTransport({
+const transpoter = nodemailer.createTransport({    
     service:'gmail',
     auth:{
         user:"househunterplatform@gmail.com",
@@ -88,7 +88,7 @@ const createAccount = asyncHandler(async (req, res)=>{
         })
 
         if(user){
-            res.status(200).json({user})
+            res.status(200).json("user registered successfully")
         }else{
             res.status(400)
             throw new Error('something went wrong!!!')
@@ -193,6 +193,7 @@ const loginAgent = asyncHandler(async(req,res)=>{
         
     }
  })
+ 
 
 
 

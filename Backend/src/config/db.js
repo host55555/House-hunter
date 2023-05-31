@@ -11,7 +11,7 @@ db.on('connected', ()=>{
 });
 
 db.on ('error',()=>{
-    console.log(`Mongo db connection failed`)
+    console.log(`Mongo db connection failed`)       
 
 })
 
