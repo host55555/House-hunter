@@ -6,14 +6,13 @@ const Adduser = () => {
   const [address, setAddress] = useState('')
   const [contacts, setContacts] = useState('')
   const [email, setEmail] = useState('')
-  const [regNo, setRegNo] = useState('')
   const [ispending, setIspending] = useState(false)
   const [message, setMessage] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const User = { agency, location, address, contacts, email, regNo }
+    const User = { agency, location, address, contacts, email,}
     setIspending(true);
     fetch('http://localhost:4000/agents/adduser', {
       method: 'POST',
@@ -52,13 +51,12 @@ const Adduser = () => {
 
         <input type="email" placeholder='Agency email' required value={email} onChange={(e) => setEmail(e.target.value)}
           className='border border-green-600 rounded-lg m-2 text-center' />
-        <input type="text" placeholder='Registration No' required value={regNo} onChange={(e) => setRegNo(e.target.value)}
-          className='border border-green-600 rounded-lg m-2 text-center' />
+       
         {!ispending && <button className='bg-emerald-500 w-32 rounded-lg m-3'>Add user </button>}
         {ispending && <button disabled className='bg-emerald-500 w-32 rounded-lg m-3'>Adding user... </button>}
       </form>
 
-    </div>
+    </div> 
   )
 }
 

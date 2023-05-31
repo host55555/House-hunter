@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'http://localhost:4000/agents/register'
+const API_URL = 'http://localhost:4000/api/agents/register'
 //register agents by admin
 const registerAgent = async(userData, token)=>{
     const config ={
