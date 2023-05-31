@@ -19,12 +19,12 @@ const Login = () => {
         (state) => state.auth)
     useEffect(() => {
         if (isError) {
-            toast.error('Something went wrong check your details!!')
+            toast.error(message)
 
         }
         if (isSuccess || user) {
             navigate('/')
-            toast.success('Login Successful...')
+            toast.success(message)
         }
         dispatch(reset())
     }, [user, isError, isSuccess])

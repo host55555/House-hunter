@@ -30,13 +30,11 @@ const MyAgents = () => {
                 <table className='w-full m-3'>
                     <thead className='bg-gray-50 border-b-2 border-gray-400'>
                         <tr>
-                            <th className='p-3 text-sm font-semibold tracking-wide text-left'>Agent no.</th>
                             <th className='p-3 text-sm font-semibold tracking-wide text-left'>Agency name</th>
                             <th className='p-3 text-sm font-semibold tracking-wide text-left'>Contacts</th>
                             <th className='p-3 text-sm font-semibold tracking-wide text-left'>Location</th>
                             <th className='p-3 text-sm font-semibold tracking-wide text-left'>Address</th>
-                            <th className='p-3 text-sm font-semibold tracking-wide text-left'>Edit</th>
-                            <th className='p-3 text-sm font-semibold tracking-wide text-left'>Delete</th>
+                            <th className='p-3 text-sm font-semibold tracking-wide text-left'>Action</th>                            
                         </tr>
                     </thead>
                    <Table />

@@ -1,62 +1,109 @@
-import React, { useState } from 'react'
+import {useState,useEffect} from 'react'
+import {useSelector,useDispatch} from 'react-redux'
+import { useNavigate} from 'react-router-dom'
+import {toast} from 'react-toastify'
+import { registerAgent,reset } from '../../features/agents/agentSlice'
 
-const Adduser = () => {
-  const [agency, setAgency] = useState('')
-  const [location, setLocation] = useState('')
-  const [address, setAddress] = useState('')
-  const [contacts, setContacts] = useState('')
-  const [email, setEmail] = useState('')
-  const [ispending, setIspending] = useState(false)
-  const [message, setMessage] = useState('')
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const User = { agency, location, address, contacts, email,}
-    setIspending(true);
-    fetch('http://localhost:4000/agents/adduser', {
-      method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(User)
-    }).then(() => {
-      setMessage('New User Added!!!');
-      setIspending(false);
-    }).catch((error)=>{
-          setMessage('Could not add!!!')
-    })
-
-
+function Adduser() {
+  const[formData, setFormData] = useState({
+    agency:'',
+    location:'',
+    address:'',
+    contacts:'',
+    email:''
+})
+const {agency,location,address,contacts,email} = formData
+const dispatch = useDispatch()
+const navigate = useNavigate()
+const {isLoading,isSuccess,isError,message}=useSelector((state)=>state.agents)
+useEffect(()=>{
+  if(isError){
+    toast.error(message)
   }
+  if(isSuccess){
+    toast.success(message)
+    navigate('/')
+  }
+},[isError,isSuccess,message])
+function onSubmit(e){
+  e.preventDefault()
+ 
+  
+    const userData={
+      agency,
+      location,
+      address,
+      contacts,
+      email,
+    }
+    dispatch(registerAgent(userData))
+  
+ 
+}
 
+const onChange = (e)=>{
+  setFormData((prevState)=>({
+      ...prevState,
+      [e.target.name]: e.target.value,
+  }))
+}
 
-
+ 
+if(isLoading){
+  toast.info("Uploading...")
+}
   return (
-    <div className='bg-slate-200 h-[100vh] flex justify-center items-center'>
+    <div className='flex justify-center m-3'>
+
+    <form onSubmit={onSubmit} className='shadow-sm shadow-black w-[400px] h-[450px] p-5'>
+        <h1 className='font-black text-3xl w-full flex  justify-center '> Register Agent</h1>
+        <div className='border-t-2 mt-3 text-center'>
+            <input type="text" 
+            placeholder='Agency' 
+             id='agency' 
+             name='agency'
+             value={agency}
+              onChange={onChange} 
+              className='border-b-[1px] my-5 border-black text-left w-full'/>
           
-      <form className='border border-gray-800 shadow-md shadow-black
-        rounded-lg m-5  w-72 ' onSubmit={handleSubmit}>
-          <h1 className='text-white bg-green-600 font-white'>{message}</h1>
-        <h1 className='font-black '>New Agency</h1>
-        <input type="text" placeholder='Agency name' required value={agency} onChange={(e) => setAgency(e.target.value)}
-          className='border border-green-600 rounded-lg m-2 text-center' />
+            <input type="text" 
+            placeholder='Location'
+             id='location' 
+             name='location'
+             value={location} 
+             onChange={onChange}
+             className='border-b-[1px] my-5 border-black text-left w-full'/>
+            <input type="text" 
+            placeholder='address' 
+            id='address'
+            name='address' 
+            value={address} 
+            onChange={onChange}
+            className='border-b-[1px] my-5 border-black text-left w-full'/>
+            <input type="text" 
+            placeholder='contacts' 
+            id='contacts'
+            name='contacts' 
+            value={contacts} 
+            onChange={onChange}
+            className='border-b-[1px] my-5 border-black text-left w-full'/>
+            
+            <input type="email" 
+            placeholder='email' 
+            id='email'
+            name='email' 
+            value={email} 
+            onChange={onChange}
+            className='border-b-[1px] my-5 border-black text-left w-full'/>
 
-        <input type="text" placeholder='Agency location' required value={location} onChange={(e) => setLocation(e.target.value)}
-          className='border border-green-600 rounded-lg m-2 text-center' />
-
-        <input type="text" placeholder='Agency address' required value={address} onChange={(e) => setAddress(e.target.value)}
-          className='border border-green-600 rounded-lg m-2 text-center' />
-
-        <input type="text" placeholder='Agency contacts' required value={contacts} onChange={(e) => setContacts(e.target.value)}
-          className='border border-green-600 rounded-lg m2 text-center' />
-
-        <input type="email" placeholder='Agency email' required value={email} onChange={(e) => setEmail(e.target.value)}
-          className='border border-green-600 rounded-lg m-2 text-center' />
-       
-        {!ispending && <button className='bg-emerald-500 w-32 rounded-lg m-3'>Add user </button>}
-        {ispending && <button disabled className='bg-emerald-500 w-32 rounded-lg m-3'>Adding user... </button>}
-      </form>
-
-    </div> 
+        </div>
+        <button type='submit' 
+        className='w-full bg-blue-600 text-2xl font-semibold p-2 rounded-md text-white'>
+            submit
+        </button>
+         
+    </form>
+</div>
   )
 }
 
