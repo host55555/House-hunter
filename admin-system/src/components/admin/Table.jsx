@@ -1,21 +1,26 @@
 import React from 'react'
 
-const Table = () => {
+const Table = ({agents}) => {
     return (
         <tbody>
-
-            <tr className='bg-blue-900' >
-                <td className='p-3 text-sm text-white'>Agency</td>
-                <td className='p-3 text-sm text-white'>Locations</td>
-                <td className='p-3 text-sm text-white'>Address</td>
-                <td className='p-3 text-sm text-white'>Contacts</td>
-                <td className='p-2 text-sm text-white'>
-                    <button className='bg-emerald-400 rounded-lg border-2 border-pink-500 w-14'>Edit</button>
-                    <button className='bg-red-600 rounded-lg border-2 border-pink-500 w-14'>Delete</button>
-                </td>
-
-            </tr>
-
+            {agents?.map((agent,key)=>{
+                return(
+                    <tr className='bg-blue-900' key={agent._id} >
+                    <td className='p-3 text-sm text-white'>{agent.agency}</td>
+                    <td className='p-3 text-sm text-white'>{agent.location}</td>
+                    <td className='p-3 text-sm text-white'>{agent.address}</td>
+                    <td className='p-3 text-sm text-white'>{agent.contacts}</td>
+                    <td className='p-3 text-sm text-white'>{agent.email}</td>
+                    <td className='p-2 text-sm text-white'>
+                        <button className='bg-emerald-400 rounded-lg border-2 border-pink-500 w-14'>Edit</button>
+                        <button className='bg-red-600 rounded-lg border-2 border-pink-500 w-14'>Delete</button>
+                    </td>
+    
+                </tr>
+    
+                )
+            })}
+          
 
         </tbody>
 
