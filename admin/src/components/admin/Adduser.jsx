@@ -1,8 +1,8 @@
-import {useState,useEffect} from 'react'
+import {useState} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import { useNavigate} from 'react-router-dom'
 import {toast} from 'react-toastify'
-import { registerAgent,reset } from '../../features/agents/agentSlice'
+import { registerAgent } from '../../features/agents/agentSlice'
 
 function Adduser() {
   const[formData, setFormData] = useState({
@@ -16,15 +16,7 @@ const {agency,location,address,contacts,email} = formData
 const dispatch = useDispatch()
 const navigate = useNavigate()
 const {isLoading,isSuccess,isError,message}=useSelector((state)=>state.agents)
-useEffect(()=>{
-  if(isError){
-    toast.error(message)
-  }
-  if(isSuccess){
-    toast.success(message)
-    navigate('/')
-  }
-},[isError,isSuccess,message])
+
 function onSubmit(e){
   e.preventDefault()
  
@@ -36,8 +28,16 @@ function onSubmit(e){
       contacts,
       email,
     }
-    dispatch(registerAgent(userData))
-  
+    try {
+      dispatch(registerAgent(userData))
+      toast.success("user added successfully")
+      navigate('/')
+    } catch (error) {
+       toast.error("something went wrong!!")
+       console.log(error);      
+    }
+    
+    
  
 }
 
@@ -48,10 +48,6 @@ const onChange = (e)=>{
   }))
 }
 
- 
-if(isLoading){
-  toast.info("Uploading...")
-}
   return (
     <div className='flex justify-center m-3'>
 
@@ -64,12 +60,14 @@ if(isLoading){
              name='agency'
              value={agency}
               onChange={onChange} 
+              required
               className='border-b-[1px] my-5 border-black text-left w-full'/>
           
             <input type="text" 
             placeholder='Location'
              id='location' 
              name='location'
+             required
              value={location} 
              onChange={onChange}
              className='border-b-[1px] my-5 border-black text-left w-full'/>
@@ -78,12 +76,14 @@ if(isLoading){
             id='address'
             name='address' 
             value={address} 
+            required
             onChange={onChange}
             className='border-b-[1px] my-5 border-black text-left w-full'/>
             <input type="text" 
             placeholder='contacts' 
             id='contacts'
             name='contacts' 
+            required
             value={contacts} 
             onChange={onChange}
             className='border-b-[1px] my-5 border-black text-left w-full'/>
@@ -92,6 +92,7 @@ if(isLoading){
             placeholder='email' 
             id='email'
             name='email' 
+            required
             value={email} 
             onChange={onChange}
             className='border-b-[1px] my-5 border-black text-left w-full'/>

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import { registeredAgents} from '../../features/agents/agentSlice'
 import Spinner from '../spinner/Spinner'
@@ -17,7 +17,7 @@ const MyAgents = () => {
         navigate('/login')
       }
       dispatch(registeredAgents())
-    },[isError,dispatch,navigate])
+    },[isError,dispatch,navigate,user,message])
     if(isLoading){
         <Spinner/>
     }
@@ -26,12 +26,12 @@ const MyAgents = () => {
 
 
     return (
-        <div>
+        <div className='h-[80vh]'>
             <div className='flex justify-center items-center'>
                 <h1 className='m-2 text-lg font-black'>Admin Dashboard</h1>
                 <button className='bg-emerald-600 text-xl h-11 text-white rounded-lg border-2
-        m-4 border-red-300'>
-                    <Link to="adduser">Add Agent</Link>
+        m-4 border-red-300' onClick={()=>navigate('/adduser')}>
+                    Add Agent
                 </button>
             </div>
 

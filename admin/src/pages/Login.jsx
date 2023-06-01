@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Spinner from '../components/spinner/Spinner'
 
@@ -22,12 +22,12 @@ const Login = () => {
             toast.error(message)
 
         }
-        if (isSuccess || user) {
+        if (isSuccess) {
+            toast.success("Logged in successfully")
             navigate('/')
-            toast.success(message)
         }
         dispatch(reset())
-    }, [user, isError, isSuccess])
+    }, [user, isError, isSuccess,dispatch,message,navigate])
     const onChange = (e) => {
         setFormData((prevState) => ({
             ...prevState,
