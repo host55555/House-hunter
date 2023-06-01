@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const asyncHandler = require('express-async-handler')
 const {secret} = require("../controllers/agentController")
 const Admin = require("../models/adminModel")
+const Agent = require('../models/agentModel')
 //@desc register Admin
 //@router POST /api/admin
 //public
@@ -59,9 +60,19 @@ const generateToken=(id)=>{
         expiresIn: '1d',
     })
 }
+//fetch agents by admin
+const allAgents=asyncHandler(async(req,res)=>{
+        const agents = await Agent.find()
+        if(agents){
+            res.status(200).json(agents)
+        }else{
+            res.status(404).json("No agents found.")
+        }
+})
 
 
 module.exports = {
     adminSignUp,
-    adminLogin
+    adminLogin,
+    allAgents
 }
