@@ -11,8 +11,8 @@ const validator = require('email-validator')
 const transpoter = nodemailer.createTransport({    
     service:'gmail',
     auth:{
-        user:"househunterplatform@gmail.com",
-        pass:"bddqxuygidmvqjmv"
+        user:process.env.USER,
+        pass:process.env.PASS
     }
 })
 //validate email
@@ -151,7 +151,7 @@ const loginAgent = asyncHandler(async(req,res)=>{
 
         //sendOTP via email
         const mailOptions={
-            from:'househunterplatform@gmail.com',
+            from:process.env.USER,
             to:email,
             subject:"Password Reset OTP",
             text:  `Your OTP code is:${otpCode}`
@@ -193,7 +193,21 @@ const loginAgent = asyncHandler(async(req,res)=>{
         
     }
  })
- 
+ //edit agents details
+ const EditAgent=asyncHandler(async(req,res)=>{
+    try {
+        const newUser = await User.findByIdAndUpdate(req.params.id,req.body,{
+            new:true,
+        })
+        res.status(200).json("User details updated successfuly")
+    } catch (error) {
+        res.status(400).json(error)
+    }
+   
+
+    
+
+ })
 
 
 
@@ -203,5 +217,6 @@ module.exports ={
     loginAgent,
     secret,
     resetPassword,
-    verifyResetPassword
+    verifyResetPassword,
+    EditAgent
 }
