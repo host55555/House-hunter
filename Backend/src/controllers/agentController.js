@@ -196,17 +196,23 @@ const loginAgent = asyncHandler(async(req,res)=>{
  //edit agents details
  const EditAgent=asyncHandler(async(req,res)=>{
     try {
-        const newUser = await User.findByIdAndUpdate(req.params.id,req.body,{
+        const newAgent = await Agent.findByIdAndUpdate(req.params.id,req.body,{
             new:true,
         })
         res.status(200).json("User details updated successfuly")
     } catch (error) {
         res.status(400).json(error)
     }
-   
-
-    
-
+ })
+ //delete agents
+ const deleteAgent = asyncHandler(async(req,res)=>{
+    const agent = await Agent.findById(req.params.id)
+    try {
+        await agent.remove()
+        res.status(200).json("Agent was deleted successfully")
+    } catch (error) {
+        res.status(400).json(error)
+    }
  })
 
 
@@ -218,5 +224,6 @@ module.exports ={
     secret,
     resetPassword,
     verifyResetPassword,
-    EditAgent
+    EditAgent,
+    deleteAgent
 }
