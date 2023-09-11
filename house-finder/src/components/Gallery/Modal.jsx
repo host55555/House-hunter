@@ -18,9 +18,10 @@ function Modal({ closeModal }) {
             email:email,
             duration:duration
         }
+        console.log(Client)
         try{
-           const response = await axios.post(`/api/clients/booking/${id}`,Client)
-            
+           const response = await axios.post(`http://localhost:4000/api/clients/booking/${id}`,Client)
+                
                 const message = await response.data
                 toast.success("Booked Successfully")
                 setFullName('')
@@ -29,8 +30,9 @@ function Modal({ closeModal }) {
                 setDuration('')
             
         }catch(error){
-            toast.error("something went wrong")
-
+            console.log(error);
+            toast.error("Error")
+          
         }
         
 

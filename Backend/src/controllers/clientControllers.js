@@ -62,9 +62,7 @@ const Book = asyncHandler(async (req, res) => {
             subject: "House Booking",
             text: `Hey ${fullName} you have successfully booked a house for ${duration}. From house hunter platform. Hope you Enjoy your stay.
             kindly reach out to your property agent before three days for more information.
-            House details
-            Location: ${house.location},
-            Category:${house.category},
+            House detail
             from Admin,
             Ken
             `

@@ -1,5 +1,5 @@
 import axios from 'axios'
-const APIURL = '/api/house/all-houses'
+const APIURL = 'http://localhost:4000/api/house/all-houses'
 
 //const get houses
 const getHouse = async() =>{
@@ -10,7 +10,7 @@ const getHouse = async() =>{
 
 }
 const searchHouses = async (query) =>{
-    const response = await axios.get(`/api/house/search-houses/${query}`)
+    const response = await axios.get(`http://localhost:4000/api/house/search-houses/${query}`)
     return response
 }
 
