@@ -10,7 +10,7 @@ const clientRouter = require('./src/routes/clientRouter')
 //creating app
 const app = express();
 //middleware
-app.use(express.json());
+app.use(express.json());        
 app.use(cors())   
 //routes
 app.use('/api/house',houseRouter);

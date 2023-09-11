@@ -30,8 +30,8 @@ function Modal({ closeModal }) {
                 setDuration('')
             
         }catch(error){
-            console.log(error);
-            toast.error("Error")
+            
+            toast.error("Something went wrong check your details")
           
         }
         
