@@ -13,7 +13,7 @@ const House = ({ houses }) => {
     return (
         <div>
             <div className='p-10 sm:flex justify-center items-center '>
-                <div className='grid grid-cols-2 md:grid-cols-5  justify-around items-center h-[100vh] w-full overflow-scroll '>
+                <div className='flex justify-between flex-wrap '>
 
                     
 
@@ -37,7 +37,7 @@ const House = ({ houses }) => {
                                                 </div>
                                                 <h5 className=' text-[10px] text-black md:font-bold w-full'>Location: {house.location}</h5>                                               
                                                 <div className='grid grid-cols-2 gap-2'>
-                                                    <h2 className='bg-red-700 text-white p-1 text-[10px]  rounded-md'>No vacancy</h2>
+                                                    <h2 className='bg-red-700 text-white p-1 text-[10px]  rounded-md'>Status</h2>
                                                     <button className='bg-blue-500 text-white text-[10px] p-1  w-full rounded-md'
                                                         onClick={() => handleHouseSelect(house)}>View</button>
 

@@ -11,13 +11,13 @@ const clientRouter = require('./src/routes/clientRouter')
 const app = express();
 //middleware
 app.use(express.json());        
-app.use(cors())   
+app.use(cors())      
 //routes
 app.use('/api/house',houseRouter);
 app.use('/api/agents',agentRouter);   
 app.use('/api/admin', adminRouter);
 app.use('/api/clients', clientRouter);     
-
+             
     
 
 const port = process.env.PORT                         

@@ -20,7 +20,6 @@ const Footer = () => {
           <li className='text-blue-800 m-2' >home</li>
           <li className=' text-blue-800 m-2'>about us</li>
           <li className=' text-blue-800 m-2'>contacts</li>
-          <li className=' text-blue-800 m-2'>available houses</li>
           <li className=' text-blue-800 m-2'>feedback</li>
           <li className=' text-blue-800 m-2'>properties</li>
           
@@ -49,7 +48,7 @@ const Footer = () => {
         
 
     </div>
-    <p className='bg-gray-700 text-white font-black'>&#169; Karani-ken All Rights Reserved</p>
+    <p className='bg-gray-700 text-white font-black'>&#169;House-Finder All Rights Reserved</p>
   </div>
   )
 }
