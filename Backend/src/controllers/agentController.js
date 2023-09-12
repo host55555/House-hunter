@@ -214,10 +214,20 @@ const loginAgent = asyncHandler(async(req,res)=>{
         res.status(400).json(error)
     }
  })
+ //get agenmt by id
+ const getAgentById = asyncHandler(async(req,res)=>{
+    const agent = await Agent.findById(req.params.id)
+    if(agent != null){
+        return res.status(200).json(agent);
+    }else{
+        return   res.status(500).json('No such agent found')
+    }
+   })
 
 
 
 module.exports ={
+    getAgentById,
     registerAgent,
     createAccount,
     loginAgent,

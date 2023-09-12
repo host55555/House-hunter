@@ -8,6 +8,8 @@ const House = ({ houses }) => {
     const [selectedHouse, setSelectedHouse] = useState(null)
     const handleHouseSelect = (house) => {
         navigate(`/house/${house._id}`)
+        
+    
     }
 
     return (
@@ -35,7 +37,8 @@ const House = ({ houses }) => {
                                                 <h2 className='text-[10px] text-black md:font-black w-full'>Price: KES. {house.amount}</h2>
                                                 <h4 className=' text-[10px] text-black md:font-semibold w-full '> {house.category}</h4>                                                
                                                 </div>
-                                                <h5 className=' text-[10px] text-black md:font-bold w-full'>Location: {house.location}</h5>                                               
+                                                <h5 className=' text-[10px] text-black md:font-bold w-full'>Location: {house.location}</h5>   
+                                                <h5 className=' text-[10px] text-black md:font-bold w-full'>Agent Contacts: {house.contacts}</h5>                                          
                                                 <div className='grid grid-cols-2 gap-2'>
                                                     <h2 className='bg-red-700 text-white p-1 text-[10px]  rounded-md'>Status</h2>
                                                     <button className='bg-blue-500 text-white text-[10px] p-1  w-full rounded-md'

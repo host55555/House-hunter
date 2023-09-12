@@ -15,7 +15,7 @@ const User = require('../models/userModel')
 const allHouses = asyncHandler(async (req, res) => {
    
     const houses = await House.find()
-
+    
     res.status(200).json(houses)    
 })
 //desc Get Houses 
@@ -33,11 +33,11 @@ const getAllHouses = asyncHandler (async (req, res)=>{
 //@route POST /api/assets
 //@access Private
 const addHouse = asyncHandler(  async(req, res) => {
-    const { owner, desc, amount, quantity, category, location } = req.body  
+    const { owner,contacts, desc, amount, quantity, category, location } = req.body  
     
 
     //check if fields are epmty
-    if (!owner || !desc || !amount || !quantity || !category || !location) {
+    if (!owner ||!contacts || !desc || !amount || !quantity || !category || !location) {
         res.status(400)
         throw new Error("All fields are required");
 
@@ -55,6 +55,7 @@ const addHouse = asyncHandler(  async(req, res) => {
         const imageUrl = urls
         const house = new House({
             owner,
+            contacts,
             desc,        
             amount,
             quantity,

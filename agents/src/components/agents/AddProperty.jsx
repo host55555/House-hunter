@@ -21,6 +21,7 @@ function AddProperty() {
         e.preventDefault();
         const houseData = new FormData();
         houseData.append('owner', formData.owner);
+        houseData.append('contacts', formData.contacts);
         houseData.append('desc',formData.desc);
         houseData.append('amount',formData.amount);
         houseData.append('quantity', formData.quantity);
@@ -49,6 +50,12 @@ function AddProperty() {
                             placeholder='property owner'
                             id='owner'
                             name='owner'
+                            onChange={onChange}
+                            className='border-b-[1px] my-2 border-black text-left w-full' />
+                            <input type="text"
+                            placeholder='contacts'
+                            id='contacts'
+                            name='contacts'
                             onChange={onChange}
                             className='border-b-[1px] my-2 border-black text-left w-full' />
                         <textarea

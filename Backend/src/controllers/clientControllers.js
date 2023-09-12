@@ -62,9 +62,10 @@ const Book = asyncHandler(async (req, res) => {
             subject: "House Booking",
             text: `Hey ${fullName} you have successfully booked a house for ${duration}. From house hunter platform. Hope you Enjoy your stay.
             kindly reach out to your property agent before three days for more information.
-            House detail
+            Agent details
+            ${house.contacts}
             from Admin,
-            Ken
+            Isaac
             `
         }
         await transpoter.sendMail(mailOptions)

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const {adminProtect} = require('../middlewares/protect')
- const {registerAgent, createAccount, loginAgent, resetPassword,verifyResetPassword,EditAgent} = require('../controllers/agentController')
+ const {registerAgent, createAccount, loginAgent, resetPassword,verifyResetPassword,EditAgent,getAgentById} = require('../controllers/agentController')
 
  //agent creating an account by admin
  router.post('/register',adminProtect, registerAgent)
@@ -9,6 +9,8 @@ const {adminProtect} = require('../middlewares/protect')
  router.post('/createAccount',createAccount)
  //agent login
  router.post('/login', loginAgent)
+ //get egent by id
+ router.get('/agentbyid/:id', getAgentById);
  //sending otpcode
  router.post('/reset-password', resetPassword)
  //verify otp

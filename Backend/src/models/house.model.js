@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const houseShema = new Schema({
     owner:{type: String, required: true},
+    contacts:{type:String,required:true},
     desc: {type: String, required: true},
     amount: {type:String, required: true},
     quantity: {type:String, required: true},
