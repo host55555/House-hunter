@@ -1,20 +1,20 @@
 {
-       "name": "House-hunter",
-        "version": "1.0.0",
-        "description": "",
-        "scripts": {
-            "build": "echo \"No build specified\" && exit 1",
-            "test": "echo \"No test specified\" && exit 1",
-            "start": "node index.js"
-        },
-       "repository": {
-            "type": "git",
-            "url": "git+https://github.com/host55555/House-hunter.git"
-        },
-        "author": "",
-        "license": "ISC",
-       "bugs": {
-           "url": "https://github.com/host55555/House-hunter/issues"
-        },
-        "homepage": "https://github.com/host55555/House-hunter#readme"
-    }
+    "name": "House-hunter",
+    "version": "1.0.0",
+    "description": "A Node.js app for house hunting",
+    "scripts": {
+        "build": "echo \"No build specified\" && exit 1",
+        "test": "echo \"No test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/host55555/House-hunter.git"
+    },
+    "author": "ken Isaac",  # Replace with your name
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/host55555/House-hunter/issues"
+    },
+    "homepage": "https://github.com/host55555/House-hunter#readme"
+}
