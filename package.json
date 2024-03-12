@@ -11,7 +11,7 @@
         "type": "git",
         "url": "git+https://github.com/host55555/House-hunter.git"
     },
-    "author": "ken Isaac",  # Replace with your name
+    "author": "ken Isaac",  
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/host55555/House-hunter/issues"
